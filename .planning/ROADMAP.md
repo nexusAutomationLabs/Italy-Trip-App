@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Foundation and Auth** - Authenticated shell deployed to Vercel with secure Supabase setup
 - [ ] **Phase 2: Itinerary and Event Views** - Pre-seeded day-by-day itinerary with full Tuscany visual design
-- [ ] **Phase 3: RSVP and Event Mutations** - Full interactive app — users can RSVP, create, edit, and delete events
+- [x] **Phase 3: RSVP and Event Mutations** - Full interactive app — users can RSVP, create, edit, and delete events (completed 2026-04-03)
 - [ ] **Phase 4: Polish and Comments** - Event comments, edit form, and pre-trip refinements
 
 ## Phase Details
@@ -66,7 +66,7 @@ Plans:
 Plans:
 - [x] 03-01-PLAN.md — Database migration (RSVP write policies, comments table, events write policies), server actions, type updates, query changes
 - [x] 03-02-PLAN.md — RSVP button with optimistic toggle, attendee list, event create/edit form, three-dot menu with delete confirmation
-- [ ] 03-03-PLAN.md — Comments section (CommentList + CommentInput) in event detail panel, human verification of full Phase 3
+- [x] 03-03-PLAN.md — Comments section (CommentList + CommentInput) in event detail panel, human verification of full Phase 3
 **UI hint**: yes
 
 ### Phase 4: Polish and Comments
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation and Auth | 2/3 | In Progress|  |
 | 2. Itinerary and Event Views | 1/2 | In Progress|  |
-| 3. RSVP and Event Mutations | 1/3 | In Progress|  |
+| 3. RSVP and Event Mutations | 3/3 | Complete   | 2026-04-03 |
 | 4. Polish and Comments | 0/? | Not started | - |
