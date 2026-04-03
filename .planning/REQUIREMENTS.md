@@ -24,17 +24,17 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Events
 
 - [x] **EVNT-01**: User can view event details (title, description, date/time, location, external link)
-- [ ] **EVNT-02**: User can create a new event with title, description, date, time, location, and link
-- [ ] **EVNT-03**: User can edit their own events
-- [ ] **EVNT-04**: User can delete their own events
+- [x] **EVNT-02**: User can create a new event with title, description, date, time, location, and link
+- [x] **EVNT-03**: User can edit their own events
+- [x] **EVNT-04**: User can delete their own events
 - [x] **EVNT-05**: Events display a category tag (e.g. dinner, excursion, group activity, open day)
 - [x] **EVNT-06**: Event location renders as a clickable Google Maps link
 
 ### RSVP
 
-- [ ] **RSVP-01**: User can toggle their attendance on any event (attending / not attending)
-- [ ] **RSVP-02**: Event detail shows the list of attendees by name
-- [ ] **RSVP-03**: Users can leave comments on events (e.g. "I'll drive", "need vegetarian option")
+- [x] **RSVP-01**: User can toggle their attendance on any event (attending / not attending)
+- [x] **RSVP-02**: Event detail shows the list of attendees by name
+- [x] **RSVP-03**: Users can leave comments on events (e.g. "I'll drive", "need vegetarian option")
 
 ### Design
 
@@ -81,14 +81,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ITIN-03 | Phase 2 | Complete |
 | ITIN-04 | Phase 2 | Complete |
 | EVNT-01 | Phase 2 | Complete |
-| EVNT-02 | Phase 3 | Pending |
-| EVNT-03 | Phase 3 | Pending |
-| EVNT-04 | Phase 3 | Pending |
+| EVNT-02 | Phase 3 | Complete |
+| EVNT-03 | Phase 3 | Complete |
+| EVNT-04 | Phase 3 | Complete |
 | EVNT-05 | Phase 2 | Complete |
 | EVNT-06 | Phase 2 | Complete |
-| RSVP-01 | Phase 3 | Pending |
-| RSVP-02 | Phase 3 | Pending |
-| RSVP-03 | Phase 3 | Pending |
+| RSVP-01 | Phase 3 | Complete |
+| RSVP-02 | Phase 3 | Complete |
+| RSVP-03 | Phase 3 | Complete |
 | DSGN-01 | Phase 1 | Complete |
 | DSGN-02 | Phase 2 | Complete |
 | DSGN-03 | Phase 1 | Complete |
