@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — Scaffold Next.js 15, install deps, shadcn/ui, Tailwind Tuscan theme, Supabase client utilities, profiles migration
 - [x] 01-02-PLAN.md — Auth pages (login/signup) with branded Tuscany design, Zod validation, Supabase server actions
-- [ ] 01-03-PLAN.md — Middleware route protection, authenticated shell with header/admin badge, placeholder itinerary with countdown
+- [x] 01-03-PLAN.md — Middleware route protection, authenticated shell with header/admin badge, placeholder itinerary with countdown
 **UI hint**: yes
 
 ### Phase 2: Itinerary and Event Views

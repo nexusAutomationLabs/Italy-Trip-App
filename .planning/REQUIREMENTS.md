@@ -11,8 +11,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **AUTH-01**: User can sign up with email and password via unlisted sign-up link
 - [x] **AUTH-02**: User session persists across browser refresh and revisits
-- [ ] **AUTH-03**: Unauthenticated visitors are redirected to login page
-- [ ] **AUTH-04**: Admin user (Adam) can edit or delete any event
+- [x] **AUTH-03**: Unauthenticated visitors are redirected to login page
+- [x] **AUTH-04**: Admin user (Adam) can edit or delete any event
 
 ### Itinerary
 
@@ -74,8 +74,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | AUTH-01 | Phase 1 | Complete |
 | AUTH-02 | Phase 1 | Complete |
-| AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Complete |
+| AUTH-04 | Phase 1 | Complete |
 | ITIN-01 | Phase 2 | Pending |
 | ITIN-02 | Phase 2 | Pending |
 | ITIN-03 | Phase 2 | Pending |

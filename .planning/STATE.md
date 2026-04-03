@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-04-03T14:33:33.606Z"
+status: verifying
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-04-03T14:38:03.832Z"
 last_activity: 2026-04-03
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 
 Phase: 01 (foundation-and-auth) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-04-03
 
 Progress: [░░░░░░░░░░] 0%
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░] 0%
 *Updated after each plan completion*
 | Phase 01-foundation-and-auth P01 | 4min | 2 tasks | 12 files |
 | Phase 01-foundation-and-auth P02 | 2min | 2 tasks | 6 files |
+| Phase 01-foundation-and-auth P03 | 5min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-and-auth]: CSS background-image (not next/image) for Tuscany auth backgrounds — avoids remotePatterns config, simpler for static Unsplash URLs
 - [Phase 01-foundation-and-auth]: Suspense wraps auth form components using useSearchParams() — required by Next.js 15 for client components inside Server Component pages
 - [Phase 01-foundation-and-auth]: Server errors from auth actions flow via ?error= URL redirect — keeps server actions stateless and works with Next.js redirect() semantics
+- [Phase 01-foundation-and-auth]: middleware.ts at project root (not src/) — Next.js resolves middleware from root only
+- [Phase 01-foundation-and-auth]: force-dynamic on (app)/layout.tsx — explicitly prevents ISR caching of auth-gated pages
+- [Phase 01-foundation-and-auth]: Admin badge uses NEXT_PUBLIC_ADMIN_EMAIL env var — no Supabase role metadata needed for 8-person app
 
 ### Pending Todos
 
@@ -80,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-03T14:33:33.604Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-04-03T14:38:03.830Z
+Stopped at: Completed 01-03-PLAN.md
 Resume file: None
