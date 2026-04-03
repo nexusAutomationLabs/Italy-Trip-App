@@ -26,6 +26,8 @@ import { RsvpButton } from './RsvpButton'
 import { AttendeeList } from './AttendeeList'
 import { EventActions } from './EventActions'
 import { EventFormPanel } from './EventFormPanel'
+import { CommentList } from './CommentList'
+import { CommentInput } from './CommentInput'
 
 interface EventDetailPanelProps {
   event: EventRow | null
@@ -105,6 +107,16 @@ function EventDetails({
       />
       <Separator />
       <AttendeeList attendees={event.rsvps} />
+      <Separator />
+      <div className="space-y-3">
+        <h3 className="text-sm font-semibold text-foreground">Comments</h3>
+        <CommentList
+          comments={event.comments ?? []}
+          currentUserId={currentUserId}
+          isAdmin={isAdmin}
+        />
+        <CommentInput eventId={event.id} />
+      </div>
     </div>
   )
 }

@@ -150,6 +150,7 @@ export interface Database {
 
 export type EventRow = Database['public']['Tables']['events']['Row'] & {
   rsvps: { user_id: string; profiles: { display_name: string | null } | null }[]
+  comments: CommentRow[]
 }
 
 export type CommentRow = Database['public']['Tables']['comments']['Row'] & {
