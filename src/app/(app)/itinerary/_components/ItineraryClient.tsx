@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import { DayCard } from './DayCard'
 import { EventDetailPanel } from './EventDetailPanel'
+import { EventFormPanel } from './EventFormPanel'
 import type { EventRow } from '@/types/database.types'
 
 interface ItineraryClientProps {
@@ -13,6 +14,8 @@ interface ItineraryClientProps {
 
 export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryClientProps) {
   const [selectedEvent, setSelectedEvent] = useState<EventRow | null>(null)
+  const [createFormOpen, setCreateFormOpen] = useState(false)
+  const [createFormDate, setCreateFormDate] = useState<string>('')
 
   const groupedDays = useMemo(() => {
     const map = new Map<string, EventRow[]>()
@@ -32,6 +35,11 @@ export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryCli
     return dates
   }, [])
 
+  function handleAddEvent(date: string) {
+    setCreateFormDate(date)
+    setCreateFormOpen(true)
+  }
+
   return (
     <>
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">
@@ -41,6 +49,7 @@ export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryCli
             date={date}
             events={groupedDays.get(date) ?? []}
             onEventClick={setSelectedEvent}
+            onAddEvent={handleAddEvent}
             currentUserId={currentUserId}
             isAdmin={isAdmin}
           />
@@ -51,6 +60,11 @@ export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryCli
         onClose={() => setSelectedEvent(null)}
         currentUserId={currentUserId}
         isAdmin={isAdmin}
+      />
+      <EventFormPanel
+        open={createFormOpen}
+        onClose={() => setCreateFormOpen(false)}
+        defaultDate={createFormDate}
       />
     </>
   )

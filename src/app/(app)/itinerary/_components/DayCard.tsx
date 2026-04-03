@@ -1,5 +1,7 @@
 import { format } from 'date-fns'
+import { Plus } from 'lucide-react'
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { EventRow } from './EventRow'
 import type { EventRow as EventRowType } from '@/types/database.types'
 
@@ -7,11 +9,12 @@ interface DayCardProps {
   date: string
   events: EventRowType[]
   onEventClick: (event: EventRowType) => void
+  onAddEvent: (date: string) => void
   currentUserId: string
   isAdmin: boolean
 }
 
-export function DayCard({ date, events, onEventClick, currentUserId, isAdmin }: DayCardProps) {
+export function DayCard({ date, events, onEventClick, onAddEvent, currentUserId, isAdmin }: DayCardProps) {
   const isArrival = date === '2026-05-07'
   const isDeparture = date === '2026-05-16'
   const isSpecialDay = isArrival || isDeparture
@@ -43,6 +46,15 @@ export function DayCard({ date, events, onEventClick, currentUserId, isAdmin }: 
             ))}
           </div>
         )}
+        <Button
+          variant="ghost"
+          size="sm"
+          className="w-full mt-2 text-muted-foreground hover:text-foreground"
+          onClick={() => onAddEvent(date)}
+        >
+          <Plus className="size-4 mr-1" />
+          Add Event
+        </Button>
       </CardContent>
     </Card>
   )
