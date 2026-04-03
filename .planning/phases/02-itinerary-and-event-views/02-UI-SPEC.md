@@ -59,12 +59,12 @@ Declared values (multiples of 4):
 |------|-------------|------|--------|-------------|-------|
 | Body | Montserrat (`font-sans`) | 14px (`text-sm`) | 400 (regular) | 1.5 | Event descriptions, panel body text, attendee count |
 | Label | Montserrat (`font-sans`) | 14px (`text-sm`) | 600 (semibold) | 1.4 | Event titles in rows, time displays, location text |
-| Heading | Playfair Display (`font-heading`) | 20px (`text-xl`) | 700 (bold) | 1.2 | Day headers ("Thursday, May 7"), panel event title |
-| Display | Playfair Display (`font-heading`) | 28px (`text-3xl`) | 700 (bold) | 1.1 | Hero section title ("Berwick goes to Tuscany 2026") |
+| Heading | Playfair Display (`font-heading`) | 20px (`text-xl`) | 600 (semibold) | 1.2 | Day headers ("Thursday, May 7"), panel event title |
+| Display | Playfair Display (`font-heading`) | 28px (`text-3xl`) | 600 (semibold) | 1.1 | Hero section title ("Berwick goes to Tuscany 2026") |
 
 **Rules:**
 - Headings always use `font-heading` (Playfair Display). All other text uses `font-sans` (Montserrat).
-- Only two weights used: 400 (regular) and 600/700 (semibold/bold).
+- Only two weights used: 400 (regular) and 600 (semibold).
 - Day format: `format(new Date('${isoDate}T12:00:00'), 'EEEE, MMMM d')` — e.g. "Thursday, May 7". Source: D-02, RESEARCH.md Pattern 3.
 - Event times: 12-hour format with am/pm, e.g. "7:00 PM". Use `date-fns` `format(time, 'h:mm a')`.
 
@@ -196,7 +196,7 @@ Define this map in a single `CATEGORY_STYLES` constant — do not scatter per-co
 ```
 <Card className="[border-l-4 border-primary if arrival/departure]">
   <CardHeader>
-    <h2 className="font-heading text-xl font-bold">Thursday, May 7</h2>
+    <h2 className="font-heading text-xl font-semibold">Thursday, May 7</h2>
     [arrival/departure badge if applicable — text-sm, muted]
   </CardHeader>
   <CardContent>
@@ -226,7 +226,7 @@ Define this map in a single `CATEGORY_STYLES` constant — do not scatter per-co
 
 ### EventDetailPanel Content Order
 1. Category badge (top, left-aligned)
-2. Event title (font-heading, text-xl, font-bold)
+2. Event title (font-heading, text-xl, font-semibold)
 3. Date + time (text-sm, muted-foreground)
 4. Description (text-sm, body, line-height 1.5)
 5. Location link (MapPin icon + text, text-primary, only if location_url exists)
