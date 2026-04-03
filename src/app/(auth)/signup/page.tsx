@@ -14,7 +14,7 @@ export default function SignupPage() {
       className="relative flex min-h-svh items-center justify-center"
       style={{
         backgroundImage:
-          'url(https://images.unsplash.com/photo-1543429776-2782f8f4f6e0?w=1920&q=80)',
+          'url(https://images.unsplash.com/photo-1744909229894-883bb19b552f?w=1920&q=80&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
