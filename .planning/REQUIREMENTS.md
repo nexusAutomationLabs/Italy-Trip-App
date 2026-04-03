@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **DSGN-01**: Modern, responsive layout that works on mobile and desktop
 - [ ] **DSGN-02**: Tuscany/Florence-themed visual design with curated Unsplash imagery
-- [ ] **DSGN-03**: Consistent design system using shadcn/ui components and Tailwind CSS
+- [x] **DSGN-03**: Consistent design system using shadcn/ui components and Tailwind CSS
 
 ## v2 Requirements
 
@@ -91,7 +91,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RSVP-03 | Phase 3 | Pending |
 | DSGN-01 | Phase 1 | Pending |
 | DSGN-02 | Phase 2 | Pending |
-| DSGN-03 | Phase 1 | Pending |
+| DSGN-03 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 20 total
