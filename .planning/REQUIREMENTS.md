@@ -72,32 +72,32 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| AUTH-04 | — | Pending |
-| ITIN-01 | — | Pending |
-| ITIN-02 | — | Pending |
-| ITIN-03 | — | Pending |
-| ITIN-04 | — | Pending |
-| EVNT-01 | — | Pending |
-| EVNT-02 | — | Pending |
-| EVNT-03 | — | Pending |
-| EVNT-04 | — | Pending |
-| EVNT-05 | — | Pending |
-| EVNT-06 | — | Pending |
-| RSVP-01 | — | Pending |
-| RSVP-02 | — | Pending |
-| RSVP-03 | — | Pending |
-| DSGN-01 | — | Pending |
-| DSGN-02 | — | Pending |
-| DSGN-03 | — | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| ITIN-01 | Phase 2 | Pending |
+| ITIN-02 | Phase 2 | Pending |
+| ITIN-03 | Phase 2 | Pending |
+| ITIN-04 | Phase 2 | Pending |
+| EVNT-01 | Phase 2 | Pending |
+| EVNT-02 | Phase 3 | Pending |
+| EVNT-03 | Phase 3 | Pending |
+| EVNT-04 | Phase 3 | Pending |
+| EVNT-05 | Phase 2 | Pending |
+| EVNT-06 | Phase 2 | Pending |
+| RSVP-01 | Phase 3 | Pending |
+| RSVP-02 | Phase 3 | Pending |
+| RSVP-03 | Phase 3 | Pending |
+| DSGN-01 | Phase 1 | Pending |
+| DSGN-02 | Phase 2 | Pending |
+| DSGN-03 | Phase 1 | Pending |
 
 **Coverage:**
 - v1 requirements: 20 total
-- Mapped to phases: 0
-- Unmapped: 20
+- Mapped to phases: 20
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-03*
-*Last updated: 2026-04-03 after initial definition*
+*Last updated: 2026-04-03 after roadmap creation*
