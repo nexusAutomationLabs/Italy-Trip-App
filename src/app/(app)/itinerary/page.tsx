@@ -28,15 +28,15 @@ export default function ItineraryPage() {
         {/* Hero content */}
         <div className="relative z-10 text-center text-white px-4">
           {daysUntil > 0 ? (
-            <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold drop-shadow-lg">
               {daysUntil} days until Tuscany!
             </h1>
           ) : daysUntil === 0 ? (
-            <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold drop-shadow-lg">
               It&apos;s Tuscany day!
             </h1>
           ) : (
-            <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold drop-shadow-lg">
               We made it to Tuscany!
             </h1>
           )}
@@ -51,7 +51,7 @@ export default function ItineraryPage() {
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>Welcome to the trip planner!</CardTitle>
-            <CardDescription>Berwick, NS does Tuscany 2026</CardDescription>
+            <CardDescription>Berwick goes to Tuscany 2026</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">

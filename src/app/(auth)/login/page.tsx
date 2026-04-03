@@ -26,8 +26,8 @@ export default function LoginPage() {
       <div className="relative z-10 mx-4 w-full max-w-md">
         <Card className="shadow-2xl">
           <CardHeader className="space-y-1 pb-2">
-            <CardTitle className="text-center text-xl font-bold">
-              Berwick, NS does Tuscany 2026
+            <CardTitle className="text-center text-2xl font-heading font-semibold">
+              Berwick goes to Tuscany 2026
             </CardTitle>
             <CardDescription className="text-center">
               Welcome back

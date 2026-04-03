@@ -19,9 +19,9 @@ export function Header({ user, isAdmin }: HeaderProps) {
       {/* Left: App name */}
       <Link
         href="/itinerary"
-        className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+        className="font-heading text-xl font-semibold text-foreground hover:text-primary transition-colors"
       >
-        <span className="hidden sm:inline">Berwick, NS does Tuscany 2026</span>
+        <span className="hidden sm:inline">Berwick goes to Tuscany 2026</span>
         <span className="sm:hidden">Tuscany 2026</span>
       </Link>
 
