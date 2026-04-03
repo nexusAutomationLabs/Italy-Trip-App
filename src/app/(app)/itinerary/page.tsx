@@ -1,66 +1,39 @@
-import { differenceInCalendarDays } from 'date-fns'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { createClient } from '@/lib/supabase/server'
+import { ItineraryClient } from './_components/ItineraryClient'
+import type { EventRow } from '@/types/database.types'
 
-export default function ItineraryPage() {
-  const tripStart = new Date('2026-05-07')
-  const today = new Date()
-  const daysUntil = differenceInCalendarDays(tripStart, today)
+export default async function ItineraryPage() {
+  const supabase = await createClient()
+
+  const { data: events } = await supabase
+    .from('events')
+    .select('*, rsvps(count)')
+    .order('event_date', { ascending: true })
+    .order('start_time', { ascending: true })
 
   return (
     <div className="flex flex-col">
-      {/* Hero section */}
+      {/* Hero section — preserved from Phase 1 */}
       <div
-        className="relative w-full min-h-[60vh] flex items-center justify-center bg-cover bg-center"
+        className="relative w-full min-h-[40vh] flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage:
             'url(https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=1920&q=80&auto=format&fit=crop)',
         }}
       >
-        {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50" />
-
-        {/* Hero content */}
         <div className="relative z-10 text-center text-white px-4">
-          {daysUntil > 0 ? (
-            <h1 className="text-4xl md:text-6xl font-heading font-bold drop-shadow-lg">
-              {daysUntil} days until Tuscany!
-            </h1>
-          ) : daysUntil === 0 ? (
-            <h1 className="text-4xl md:text-6xl font-heading font-bold drop-shadow-lg">
-              It&apos;s Tuscany day!
-            </h1>
-          ) : (
-            <h1 className="text-4xl md:text-6xl font-heading font-bold drop-shadow-lg">
-              We made it to Tuscany!
-            </h1>
-          )}
-          <p className="mt-4 text-lg md:text-xl text-white/90 drop-shadow">
-            May 7 – 16, 2026 &nbsp;|&nbsp; Tuscany, Italy
+          <h1 className="text-3xl md:text-5xl font-heading font-semibold drop-shadow-lg">
+            Berwick goes to Tuscany 2026
+          </h1>
+          <p className="mt-3 text-base md:text-lg text-white/90 drop-shadow">
+            May 7 – 16, 2026
           </p>
         </div>
       </div>
 
-      {/* Welcome card */}
-      <div className="flex justify-center px-4 py-8">
-        <Card className="w-full max-w-2xl">
-          <CardHeader>
-            <CardTitle>Welcome to the trip planner!</CardTitle>
-            <CardDescription>Berwick goes to Tuscany 2026</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              The itinerary is being built. Check back soon for day-by-day
-              plans — excursions, dinners, and everything in between.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Itinerary */}
+      <ItineraryClient events={(events as EventRow[]) ?? []} />
     </div>
   )
 }
