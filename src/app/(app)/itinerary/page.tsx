@@ -19,7 +19,7 @@ export default function ItineraryPage() {
         className="relative w-full min-h-[60vh] flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage:
-            'url(https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80)',
+            'url(https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=80)',
         }}
       >
         {/* Dark overlay for text readability */}
@@ -41,7 +41,7 @@ export default function ItineraryPage() {
             </h1>
           )}
           <p className="mt-4 text-lg md:text-xl text-white/90 drop-shadow">
-            May 7 – 16, 2026 &nbsp;|&nbsp; Florence, Italy
+            May 7 – 16, 2026 &nbsp;|&nbsp; Tuscany, Italy
           </p>
         </div>
       </div>

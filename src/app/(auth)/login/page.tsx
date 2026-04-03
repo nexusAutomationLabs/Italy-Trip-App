@@ -14,7 +14,7 @@ export default function LoginPage() {
       className="relative flex min-h-svh items-center justify-center"
       style={{
         backgroundImage:
-          'url(https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1920&q=80)',
+          'url(https://images.unsplash.com/photo-1543429776-2782f8f4f6e0?w=1920&q=80)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
