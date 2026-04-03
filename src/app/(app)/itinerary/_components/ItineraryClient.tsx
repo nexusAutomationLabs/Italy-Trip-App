@@ -42,7 +42,7 @@ export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryCli
 
   return (
     <>
-      <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">
+      <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
         {allDates.map((date) => (
           <DayCard
             key={date}
