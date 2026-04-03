@@ -15,12 +15,12 @@ Everyone in the group can see what's planned each day, add new activities, and s
 - [x] Day-by-day itinerary view for May 7-16, 2026 — Validated in Phase 2: Itinerary and Event Views
 - [x] Pre-seeded schedule with the existing planned events — Validated in Phase 2: Itinerary and Event Views
 - [x] Modern design with Unsplash Florence/Tuscany imagery — Validated in Phase 2: Itinerary and Event Views
+- [x] Anyone can create new events (title, description, date/time, location/link) — Validated in Phase 3: RSVP and Event Mutations
+- [x] Individual RSVP — users add their name to any event — Validated in Phase 3: RSVP and Event Mutations
 
 ### Active
 
 - [ ] Supabase-powered authentication with self-service sign-up (private/unlisted link)
-- [ ] Anyone can create new events (title, description, date/time, location/link)
-- [ ] Individual RSVP — users add their name to any event
 - [ ] Hosted on Vercel
 
 ### Out of Scope
@@ -88,4 +88,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 after Phase 2 completion*
+*Last updated: 2026-04-03 after Phase 3 completion*
