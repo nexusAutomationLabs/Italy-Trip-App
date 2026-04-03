@@ -65,7 +65,7 @@ Plans:
 **Plans**: 3 plans
 Plans:
 - [x] 03-01-PLAN.md — Database migration (RSVP write policies, comments table, events write policies), server actions, type updates, query changes
-- [ ] 03-02-PLAN.md — RSVP button with optimistic toggle, attendee list, event create/edit form, three-dot menu with delete confirmation
+- [x] 03-02-PLAN.md — RSVP button with optimistic toggle, attendee list, event create/edit form, three-dot menu with delete confirmation
 - [ ] 03-03-PLAN.md — Comments section (CommentList + CommentInput) in event detail panel, human verification of full Phase 3
 **UI hint**: yes
 
