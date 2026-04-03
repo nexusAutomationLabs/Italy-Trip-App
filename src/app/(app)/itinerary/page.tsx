@@ -19,7 +19,7 @@ export default function ItineraryPage() {
         className="relative w-full min-h-[60vh] flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage:
-            'url(https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=80)',
+            'url(https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=1920&q=80&auto=format&fit=crop)',
         }}
       >
         {/* Dark overlay for text readability */}
