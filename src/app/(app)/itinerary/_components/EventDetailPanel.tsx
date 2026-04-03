@@ -24,6 +24,8 @@ import type { EventRow } from '@/types/database.types'
 interface EventDetailPanelProps {
   event: EventRow | null
   onClose: () => void
+  currentUserId: string
+  isAdmin: boolean
 }
 
 function formatTime(time: string | null): string {
@@ -37,14 +39,25 @@ function formatTime(time: string | null): string {
   return `${displayHour}:${displayMinutes} ${period}`
 }
 
-function EventDetails({ event }: { event: EventRow }) {
-  const count = event.rsvps?.[0]?.count ?? 0
+function EventDetails({
+  event,
+  currentUserId,
+  isAdmin,
+}: {
+  event: EventRow
+  currentUserId: string
+  isAdmin: boolean
+}) {
+  const count = event.rsvps?.length ?? 0
   // Noon anchor prevents timezone shift when formatting event_date
   const formattedDate = format(new Date(`${event.event_date}T12:00:00`), 'EEEE, MMMM d')
   const formattedTime = formatTime(event.start_time)
   const dateTimeDisplay = event.start_time
     ? `${formattedDate} at ${formattedTime}`
     : formattedDate
+
+  void currentUserId
+  void isAdmin
 
   return (
     <div className="space-y-4 p-4">
@@ -72,7 +85,7 @@ function EventDetails({ event }: { event: EventRow }) {
   )
 }
 
-export function EventDetailPanel({ event, onClose }: EventDetailPanelProps) {
+export function EventDetailPanel({ event, onClose, currentUserId, isAdmin }: EventDetailPanelProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   if (isDesktop) {
@@ -85,7 +98,13 @@ export function EventDetailPanel({ event, onClose }: EventDetailPanelProps) {
             </SheetTitle>
             <SheetDescription className="sr-only">Event details</SheetDescription>
           </SheetHeader>
-          {event && <EventDetails event={event} />}
+          {event && (
+            <EventDetails
+              event={event}
+              currentUserId={currentUserId}
+              isAdmin={isAdmin}
+            />
+          )}
         </SheetContent>
       </Sheet>
     )
@@ -102,7 +121,11 @@ export function EventDetailPanel({ event, onClose }: EventDetailPanelProps) {
         </DrawerHeader>
         {event && (
           <div className="px-4 pb-6">
-            <EventDetails event={event} />
+            <EventDetails
+              event={event}
+              currentUserId={currentUserId}
+              isAdmin={isAdmin}
+            />
           </div>
         )}
       </DrawerContent>

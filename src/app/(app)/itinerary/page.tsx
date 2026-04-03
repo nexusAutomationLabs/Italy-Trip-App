@@ -5,9 +5,12 @@ import type { EventRow } from '@/types/database.types'
 export default async function ItineraryPage() {
   const supabase = await createClient()
 
+  const { data: { user } } = await supabase.auth.getUser()
+  const isAdmin = user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL
+
   const { data: events } = await supabase
     .from('events')
-    .select('*, rsvps(count)')
+    .select('*, rsvps(user_id, profiles(display_name))')
     .order('event_date', { ascending: true })
     .order('start_time', { ascending: true })
 
@@ -33,7 +36,11 @@ export default async function ItineraryPage() {
       </div>
 
       {/* Itinerary */}
-      <ItineraryClient events={(events as EventRow[]) ?? []} />
+      <ItineraryClient
+        events={(events as unknown as EventRow[]) ?? []}
+        currentUserId={user?.id ?? ''}
+        isAdmin={isAdmin ?? false}
+      />
     </div>
   )
 }

@@ -20,7 +20,7 @@ function formatTime(time: string | null): string {
 }
 
 export function EventRow({ event, onClick }: EventRowProps) {
-  const count = event.rsvps?.[0]?.count ?? 0
+  const count = event.rsvps?.length ?? 0
 
   return (
     <button

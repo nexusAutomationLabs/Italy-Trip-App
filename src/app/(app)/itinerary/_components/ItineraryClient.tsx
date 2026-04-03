@@ -7,9 +7,11 @@ import type { EventRow } from '@/types/database.types'
 
 interface ItineraryClientProps {
   events: EventRow[]
+  currentUserId: string
+  isAdmin: boolean
 }
 
-export function ItineraryClient({ events }: ItineraryClientProps) {
+export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryClientProps) {
   const [selectedEvent, setSelectedEvent] = useState<EventRow | null>(null)
 
   const groupedDays = useMemo(() => {
@@ -39,12 +41,16 @@ export function ItineraryClient({ events }: ItineraryClientProps) {
             date={date}
             events={groupedDays.get(date) ?? []}
             onEventClick={setSelectedEvent}
+            currentUserId={currentUserId}
+            isAdmin={isAdmin}
           />
         ))}
       </div>
       <EventDetailPanel
         event={selectedEvent}
         onClose={() => setSelectedEvent(null)}
+        currentUserId={currentUserId}
+        isAdmin={isAdmin}
       />
     </>
   )

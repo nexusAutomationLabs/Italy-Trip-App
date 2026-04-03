@@ -7,15 +7,20 @@ interface DayCardProps {
   date: string
   events: EventRowType[]
   onEventClick: (event: EventRowType) => void
+  currentUserId: string
+  isAdmin: boolean
 }
 
-export function DayCard({ date, events, onEventClick }: DayCardProps) {
+export function DayCard({ date, events, onEventClick, currentUserId, isAdmin }: DayCardProps) {
   const isArrival = date === '2026-05-07'
   const isDeparture = date === '2026-05-16'
   const isSpecialDay = isArrival || isDeparture
 
   // Noon anchor prevents UTC midnight → previous day shift in North American timezones
   const formattedDate = format(new Date(`${date}T12:00:00`), 'EEEE, MMMM d')
+
+  void currentUserId
+  void isAdmin
 
   return (
     <Card className={isSpecialDay ? 'border-l-4 border-primary' : ''}>
