@@ -9,8 +9,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can sign up with email and password via unlisted sign-up link
-- [ ] **AUTH-02**: User session persists across browser refresh and revisits
+- [x] **AUTH-01**: User can sign up with email and password via unlisted sign-up link
+- [x] **AUTH-02**: User session persists across browser refresh and revisits
 - [ ] **AUTH-03**: Unauthenticated visitors are redirected to login page
 - [ ] **AUTH-04**: Admin user (Adam) can edit or delete any event
 
@@ -38,7 +38,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design
 
-- [ ] **DSGN-01**: Modern, responsive layout that works on mobile and desktop
+- [x] **DSGN-01**: Modern, responsive layout that works on mobile and desktop
 - [ ] **DSGN-02**: Tuscany/Florence-themed visual design with curated Unsplash imagery
 - [x] **DSGN-03**: Consistent design system using shadcn/ui components and Tailwind CSS
 
@@ -72,8 +72,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Pending |
 | AUTH-04 | Phase 1 | Pending |
 | ITIN-01 | Phase 2 | Pending |
@@ -89,7 +89,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RSVP-01 | Phase 3 | Pending |
 | RSVP-02 | Phase 3 | Pending |
 | RSVP-03 | Phase 3 | Pending |
-| DSGN-01 | Phase 1 | Pending |
+| DSGN-01 | Phase 1 | Complete |
 | DSGN-02 | Phase 2 | Pending |
 | DSGN-03 | Phase 1 | Complete |
 

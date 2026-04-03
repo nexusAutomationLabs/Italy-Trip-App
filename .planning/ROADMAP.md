@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 Plans:
 - [x] 01-01-PLAN.md — Scaffold Next.js 15, install deps, shadcn/ui, Tailwind Tuscan theme, Supabase client utilities, profiles migration
-- [ ] 01-02-PLAN.md — Auth pages (login/signup) with branded Tuscany design, Zod validation, Supabase server actions
+- [x] 01-02-PLAN.md — Auth pages (login/signup) with branded Tuscany design, Zod validation, Supabase server actions
 - [ ] 01-03-PLAN.md — Middleware route protection, authenticated shell with header/admin badge, placeholder itinerary with countdown
 **UI hint**: yes
 
@@ -79,7 +79,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Auth | 1/3 | In Progress|  |
+| 1. Foundation and Auth | 2/3 | In Progress|  |
 | 2. Itinerary and Event Views | 0/? | Not started | - |
 | 3. RSVP and Event Mutations | 0/? | Not started | - |
 | 4. Polish and Comments | 0/? | Not started | - |
