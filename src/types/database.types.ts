@@ -85,6 +85,29 @@ export interface Database {
           created_at?: string
         }
       }
+      comments: {
+        Row: {
+          id: string
+          event_id: string
+          user_id: string
+          content: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          user_id: string
+          content: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          user_id?: string
+          content?: string
+          created_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
@@ -99,5 +122,9 @@ export interface Database {
 }
 
 export type EventRow = Database['public']['Tables']['events']['Row'] & {
-  rsvps: { count: number }[]
+  rsvps: { user_id: string; profiles: { display_name: string | null } | null }[]
+}
+
+export type CommentRow = Database['public']['Tables']['comments']['Row'] & {
+  profiles: { display_name: string | null } | null
 }
