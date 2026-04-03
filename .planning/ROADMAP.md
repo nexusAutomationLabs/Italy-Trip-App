@@ -48,7 +48,7 @@ Plans:
   5. Each event displays a category tag (dinner, excursion, group activity, open day) and the page uses Tuscany/Florence imagery
 **Plans**: 2 plans
 Plans:
-- [ ] 02-01-PLAN.md — Database schema (events + rsvps tables), seed data for all 10 trip days, TypeScript types, shadcn components
+- [x] 02-01-PLAN.md — Database schema (events + rsvps tables), seed data for all 10 trip days, TypeScript types, shadcn components
 - [ ] 02-02-PLAN.md — Itinerary UI: day cards, event rows, event detail panel (Sheet/Drawer), page rewrite with Supabase data fetching
 **UI hint**: yes
 
@@ -83,6 +83,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation and Auth | 2/3 | In Progress|  |
-| 2. Itinerary and Event Views | 0/2 | Not started | - |
+| 2. Itinerary and Event Views | 1/2 | In Progress|  |
 | 3. RSVP and Event Mutations | 0/? | Not started | - |
 | 4. Polish and Comments | 0/? | Not started | - |

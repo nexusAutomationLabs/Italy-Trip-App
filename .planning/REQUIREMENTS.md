@@ -17,7 +17,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Itinerary
 
 - [ ] **ITIN-01**: User sees a day-by-day itinerary view covering May 7-16, 2026
-- [ ] **ITIN-02**: Itinerary is pre-seeded with the group's existing planned events
+- [x] **ITIN-02**: Itinerary is pre-seeded with the group's existing planned events
 - [ ] **ITIN-03**: Arrival day (May 7) and departure day (May 16) have distinct visual treatment
 - [ ] **ITIN-04**: Each day displays all events with title, time, and attendee count
 
@@ -27,7 +27,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **EVNT-02**: User can create a new event with title, description, date, time, location, and link
 - [ ] **EVNT-03**: User can edit their own events
 - [ ] **EVNT-04**: User can delete their own events
-- [ ] **EVNT-05**: Events display a category tag (e.g. dinner, excursion, group activity, open day)
+- [x] **EVNT-05**: Events display a category tag (e.g. dinner, excursion, group activity, open day)
 - [ ] **EVNT-06**: Event location renders as a clickable Google Maps link
 
 ### RSVP
@@ -77,14 +77,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-03 | Phase 1 | Complete |
 | AUTH-04 | Phase 1 | Complete |
 | ITIN-01 | Phase 2 | Pending |
-| ITIN-02 | Phase 2 | Pending |
+| ITIN-02 | Phase 2 | Complete |
 | ITIN-03 | Phase 2 | Pending |
 | ITIN-04 | Phase 2 | Pending |
 | EVNT-01 | Phase 2 | Pending |
 | EVNT-02 | Phase 3 | Pending |
 | EVNT-03 | Phase 3 | Pending |
 | EVNT-04 | Phase 3 | Pending |
-| EVNT-05 | Phase 2 | Pending |
+| EVNT-05 | Phase 2 | Complete |
 | EVNT-06 | Phase 2 | Pending |
 | RSVP-01 | Phase 3 | Pending |
 | RSVP-02 | Phase 3 | Pending |
