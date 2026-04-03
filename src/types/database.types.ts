@@ -2,6 +2,8 @@
 // These will be replaced by Supabase CLI-generated types after the project is linked:
 //   supabase gen types typescript --linked > src/types/database.types.ts
 
+export type EventCategory = 'dinner' | 'excursion' | 'group_activity' | 'travel' | 'open_day'
+
 export interface Database {
   public: {
     Tables: {
@@ -22,6 +24,67 @@ export interface Database {
           updated_at?: string | null
         }
       }
+      events: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          event_date: string
+          start_time: string | null
+          end_time: string | null
+          category: EventCategory
+          location_name: string | null
+          location_url: string | null
+          created_by: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          event_date: string
+          start_time?: string | null
+          end_time?: string | null
+          category: EventCategory
+          location_name?: string | null
+          location_url?: string | null
+          created_by?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          event_date?: string
+          start_time?: string | null
+          end_time?: string | null
+          category?: EventCategory
+          location_name?: string | null
+          location_url?: string | null
+          created_by?: string | null
+          created_at?: string
+        }
+      }
+      rsvps: {
+        Row: {
+          id: string
+          event_id: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          user_id?: string
+          created_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
@@ -30,7 +93,11 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      event_category: EventCategory
     }
   }
+}
+
+export type EventRow = Database['public']['Tables']['events']['Row'] & {
+  rsvps: { count: number }[]
 }
