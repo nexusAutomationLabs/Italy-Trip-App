@@ -29,7 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. An unauthenticated visitor who tries to access any app route is redirected to the login page
   4. The app is deployed to Vercel and accessible at a live URL with Supabase auth working end-to-end
   5. The layout is responsive and renders correctly on both mobile and desktop
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Next.js 15, install deps, shadcn/ui, Tailwind Tuscan theme, Supabase client utilities, profiles migration
+- [ ] 01-02-PLAN.md — Auth pages (login/signup) with branded Tuscany design, Zod validation, Supabase server actions
+- [ ] 01-03-PLAN.md — Middleware route protection, authenticated shell with header/admin badge, placeholder itinerary with countdown
 **UI hint**: yes
 
 ### Phase 2: Itinerary and Event Views
@@ -75,7 +79,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Auth | 0/? | Not started | - |
+| 1. Foundation and Auth | 0/3 | Planned | - |
 | 2. Itinerary and Event Views | 0/? | Not started | - |
 | 3. RSVP and Event Mutations | 0/? | Not started | - |
 | 4. Polish and Comments | 0/? | Not started | - |
