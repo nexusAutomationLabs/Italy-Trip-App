@@ -62,7 +62,12 @@ Plans:
   3. A user can create a new event with title, description, date, time, location, and link — and it appears in the itinerary
   4. A user can edit or delete their own events; admin (Adam) can edit or delete any event
   5. Users can leave a comment on an event (e.g. "I'll drive", "need vegetarian option")
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 03-01-PLAN.md — Database migration (RSVP write policies, comments table, events write policies), server actions, type updates, query changes
+- [ ] 03-02-PLAN.md — RSVP button with optimistic toggle, attendee list, event create/edit form, three-dot menu with delete confirmation
+- [ ] 03-03-PLAN.md — Comments section (CommentList + CommentInput) in event detail panel, human verification of full Phase 3
+**UI hint**: yes
 
 ### Phase 4: Polish and Comments
 **Goal**: The app is refined and ready for the group to use during the May 2026 trip
@@ -84,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation and Auth | 2/3 | In Progress|  |
 | 2. Itinerary and Event Views | 1/2 | In Progress|  |
-| 3. RSVP and Event Mutations | 0/? | Not started | - |
+| 3. RSVP and Event Mutations | 0/3 | Not started | - |
 | 4. Polish and Comments | 0/? | Not started | - |
