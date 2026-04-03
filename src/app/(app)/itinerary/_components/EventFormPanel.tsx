@@ -110,11 +110,13 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
       <div className="space-y-2">
         <Label htmlFor="category">Category</Label>
         <Select
-          defaultValue={form.getValues('category') ?? 'open_day'}
+          value={form.watch('category') ?? 'open_day'}
           onValueChange={(value) => form.setValue('category', value as EventCategory)}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select category" />
+            <SelectValue>
+              {CATEGORY_LABELS[(form.watch('category') ?? 'open_day') as EventCategory]}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             {(Object.entries(CATEGORY_LABELS) as [EventCategory, string][]).map(
