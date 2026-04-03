@@ -49,7 +49,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 02-01-PLAN.md — Database schema (events + rsvps tables), seed data for all 10 trip days, TypeScript types, shadcn components
-- [ ] 02-02-PLAN.md — Itinerary UI: day cards, event rows, event detail panel (Sheet/Drawer), page rewrite with Supabase data fetching
+- [x] 02-02-PLAN.md — Itinerary UI: day cards, event rows, event detail panel (Sheet/Drawer), page rewrite with Supabase data fetching
 **UI hint**: yes
 
 ### Phase 3: RSVP and Event Mutations

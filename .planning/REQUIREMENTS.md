@@ -16,19 +16,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Itinerary
 
-- [ ] **ITIN-01**: User sees a day-by-day itinerary view covering May 7-16, 2026
+- [x] **ITIN-01**: User sees a day-by-day itinerary view covering May 7-16, 2026
 - [x] **ITIN-02**: Itinerary is pre-seeded with the group's existing planned events
-- [ ] **ITIN-03**: Arrival day (May 7) and departure day (May 16) have distinct visual treatment
-- [ ] **ITIN-04**: Each day displays all events with title, time, and attendee count
+- [x] **ITIN-03**: Arrival day (May 7) and departure day (May 16) have distinct visual treatment
+- [x] **ITIN-04**: Each day displays all events with title, time, and attendee count
 
 ### Events
 
-- [ ] **EVNT-01**: User can view event details (title, description, date/time, location, external link)
+- [x] **EVNT-01**: User can view event details (title, description, date/time, location, external link)
 - [ ] **EVNT-02**: User can create a new event with title, description, date, time, location, and link
 - [ ] **EVNT-03**: User can edit their own events
 - [ ] **EVNT-04**: User can delete their own events
 - [x] **EVNT-05**: Events display a category tag (e.g. dinner, excursion, group activity, open day)
-- [ ] **EVNT-06**: Event location renders as a clickable Google Maps link
+- [x] **EVNT-06**: Event location renders as a clickable Google Maps link
 
 ### RSVP
 
@@ -39,7 +39,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Design
 
 - [x] **DSGN-01**: Modern, responsive layout that works on mobile and desktop
-- [ ] **DSGN-02**: Tuscany/Florence-themed visual design with curated Unsplash imagery
+- [x] **DSGN-02**: Tuscany/Florence-themed visual design with curated Unsplash imagery
 - [x] **DSGN-03**: Consistent design system using shadcn/ui components and Tailwind CSS
 
 ## v2 Requirements
@@ -76,21 +76,21 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Complete |
 | AUTH-04 | Phase 1 | Complete |
-| ITIN-01 | Phase 2 | Pending |
+| ITIN-01 | Phase 2 | Complete |
 | ITIN-02 | Phase 2 | Complete |
-| ITIN-03 | Phase 2 | Pending |
-| ITIN-04 | Phase 2 | Pending |
-| EVNT-01 | Phase 2 | Pending |
+| ITIN-03 | Phase 2 | Complete |
+| ITIN-04 | Phase 2 | Complete |
+| EVNT-01 | Phase 2 | Complete |
 | EVNT-02 | Phase 3 | Pending |
 | EVNT-03 | Phase 3 | Pending |
 | EVNT-04 | Phase 3 | Pending |
 | EVNT-05 | Phase 2 | Complete |
-| EVNT-06 | Phase 2 | Pending |
+| EVNT-06 | Phase 2 | Complete |
 | RSVP-01 | Phase 3 | Pending |
 | RSVP-02 | Phase 3 | Pending |
 | RSVP-03 | Phase 3 | Pending |
 | DSGN-01 | Phase 1 | Complete |
-| DSGN-02 | Phase 2 | Pending |
+| DSGN-02 | Phase 2 | Complete |
 | DSGN-03 | Phase 1 | Complete |
 
 **Coverage:**
