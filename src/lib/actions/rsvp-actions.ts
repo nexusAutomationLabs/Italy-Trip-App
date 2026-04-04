@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 
 export async function toggleRsvp(
@@ -23,5 +24,5 @@ export async function toggleRsvp(
       .eq('user_id', user.id)
     if (error) throw new Error(error.message)
   }
-  // No revalidatePath — optimistic UI handles state locally (see Pitfall 3 in RESEARCH.md)
+  revalidatePath('/itinerary')
 }
