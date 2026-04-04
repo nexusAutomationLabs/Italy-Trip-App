@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useTransition } from 'react'
+import { useEffect, useTransition } from 'react'
 import {
   Sheet,
   SheetContent,
@@ -69,6 +69,26 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
           category: 'open_day' as EventCategory,
         },
   })
+
+  useEffect(() => {
+    if (event) {
+      form.reset({
+        title: event.title,
+        event_date: event.event_date,
+        start_time: event.start_time ?? undefined,
+        description: event.description ?? undefined,
+        location_name: event.location_name ?? undefined,
+        location_url: event.location_url ?? undefined,
+        category: event.category,
+      })
+    } else {
+      form.reset({
+        title: '',
+        event_date: defaultDate ?? '',
+        category: 'open_day' as EventCategory,
+      })
+    }
+  }, [event, defaultDate, form])
 
   function onSubmit(data: EventFormInput) {
     startTransition(async () => {
