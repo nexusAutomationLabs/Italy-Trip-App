@@ -31,20 +31,6 @@ export async function updateEvent(eventId: string, data: EventFormData): Promise
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { success: false, error: 'Not authenticated' }
 
-  const isAdmin = user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL
-
-  // Check ownership
-  const { data: event } = await supabase
-    .from('events')
-    .select('created_by')
-    .eq('id', eventId)
-    .single()
-
-  if (!event) return { success: false, error: 'Event not found' }
-  if (!isAdmin && event.created_by !== user.id) {
-    return { success: false, error: 'Not authorized' }
-  }
-
   const parsed = eventSchema.safeParse(data)
   if (!parsed.success) return { success: false, error: parsed.error.errors[0].message }
 

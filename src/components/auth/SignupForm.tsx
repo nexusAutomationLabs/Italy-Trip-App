@@ -82,6 +82,20 @@ export function SignupForm() {
         )}
       </div>
 
+      <div className="space-y-1.5">
+        <Label htmlFor="confirm_password">Confirm Password</Label>
+        <Input
+          id="confirm_password"
+          type="password"
+          autoComplete="new-password"
+          {...register('confirm_password')}
+          aria-invalid={!!errors.confirm_password}
+        />
+        {errors.confirm_password && (
+          <p className="text-sm text-destructive">{errors.confirm_password.message}</p>
+        )}
+      </div>
+
       <Button
         type="submit"
         className="w-full"

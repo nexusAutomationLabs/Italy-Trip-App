@@ -67,7 +67,6 @@ function EventDetails({
     ? `${formattedDate} at ${formattedTime}`
     : formattedDate
 
-  const canEditOrDelete = currentUserId === event.created_by || isAdmin
   const isAttending = event.rsvps.some((r) => r.user_id === currentUserId)
 
   return (
@@ -76,13 +75,11 @@ function EventDetails({
         <Badge className={CATEGORY_STYLES[event.category]}>
           {CATEGORY_LABELS[event.category]}
         </Badge>
-        {canEditOrDelete && (
-          <EventActions
-            eventId={event.id}
-            onEdit={onEdit}
-            onDeleted={onDeleted}
-          />
-        )}
+        <EventActions
+          eventId={event.id}
+          onEdit={onEdit}
+          onDeleted={onDeleted}
+        />
       </div>
       <p className="text-sm text-muted-foreground">{dateTimeDisplay}</p>
       {event.description && (

@@ -24,19 +24,21 @@ export function EventRow({ event, onClick }: EventRowProps) {
 
   return (
     <button
-      className="w-full flex items-center gap-3 py-3 px-2 hover:bg-muted/40 rounded-md text-left min-h-11"
+      className="w-full flex flex-wrap items-center gap-x-3 gap-y-1 py-3 px-2 hover:bg-muted/40 rounded-md text-left min-h-11"
       onClick={() => onClick(event)}
     >
       <span className="text-sm font-sans font-semibold text-muted-foreground w-20 shrink-0">
         {formatTime(event.start_time)}
       </span>
-      <span className="flex-1 text-sm font-semibold font-sans text-foreground truncate">
+      <span className="flex-1 min-w-0 text-sm font-semibold font-sans text-foreground truncate">
         {event.title}
       </span>
-      <Badge className={`${CATEGORY_STYLES[event.category]} text-xs shrink-0`}>
-        {CATEGORY_LABELS[event.category]}
-      </Badge>
-      <span className="text-xs text-muted-foreground shrink-0">{count} attending</span>
+      <span className="flex items-center gap-2 shrink-0">
+        <Badge className={`${CATEGORY_STYLES[event.category]} text-xs`}>
+          {CATEGORY_LABELS[event.category]}
+        </Badge>
+        <span className="text-xs text-muted-foreground">{count} attending</span>
+      </span>
     </button>
   )
 }
