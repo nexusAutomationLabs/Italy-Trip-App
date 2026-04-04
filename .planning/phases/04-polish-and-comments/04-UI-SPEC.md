@@ -56,13 +56,18 @@ Exceptions:
 |------|------|--------|-------------|------|
 | Body | 14px | 400 (regular) | 1.5 | Montserrat (--font-sans) |
 | Label / meta | 12px | 400 (regular) | 1.4 | Montserrat (--font-sans) |
-| UI heading | 16px | 600 (semibold) | 1.3 | Montserrat (--font-sans) |
+| UI heading | 18px | 700 (bold) | 1.3 | Montserrat (--font-sans) |
 | Card title / display | 18px | 700 italic | 1.2 | Playfair Display (--font-heading) |
 
-Notes:
-- Day header label (e.g. "DAY ONE"): 11px, weight 600, letter-spacing 0.1em, all-caps, Montserrat — contextual exception for ornamental label
-- Day header date (e.g. "Thursday, May 7"): 20px, weight 600, line-height 1.2, Montserrat
-- Login page title ("Berwick goes to Tuscany 2026"): 32px, italic, weight 400, Playfair Display, white text on photo overlay
+Scale: 4 sizes (12px, 14px, 18px, 28px). Weights: 2 (400 regular, 700 bold).
+
+Usage notes for declared sizes:
+- 12px: label/meta, day header ornamental label ("DAY ONE" all-caps, letter-spacing 0.1em), timezone notice, address text above map embed, trip dates in sidebar — absorbs the former 11px ornamental exception
+- 14px: body text, descriptions, comment copy
+- 18px: UI headings (sidebar section titles, panel headings), day header date ("Thursday, May 7"), card title display — absorbs the former 20px day header date
+- 28px: login page display title ("Berwick goes to Tuscany 2026"), Playfair Display italic, weight 400, white text on photo overlay — replaces former 32px
+
+Former semibold (600) usages collapsed to 700: sidebar active nav label, day header date, UI headings. The sole weight-400 exception is the 28px Playfair login title (display-only, decorative).
 
 Source: globals.css (--font-sans: Montserrat, --font-heading: Playfair), CONTEXT.md D-06 (bold italic title on cards), CONTEXT.md D-05 (day numbering).
 
@@ -110,7 +115,7 @@ Components already installed (carry forward, do not re-add):
 New custom components (built in this phase, not from registry):
 - `EventCard` — horizontal card replacing EventRow; shows category badge, time, italic title, description snippet, attendee avatar strip, category icon
 - `AvatarStrip` — 2-3 avatar circles with +N overflow, 32px diameter, -4px overlap
-- `HorizontalDayRow` — scroll container for EventCard instances per day
+- `HorizontalDayRow` — scroll container for EventCard instances per day; primary focal point of the itinerary screen
 - `MapView` — /map page with embedded Google Map (iframe), pins for all event locations
 - `ProfileModal` — dialog for display name + avatar photo upload
 - `AddressAutocomplete` — controlled input using Google Places Autocomplete API
@@ -120,8 +125,13 @@ New custom components (built in this phase, not from registry):
 ## Interaction Contracts
 
 ### Horizontal card scroll (desktop)
+
+Primary focal point: the `HorizontalDayRow` — a per-day horizontally scrolling card row is the central interactive surface of the itinerary screen. All event cards for a day live here.
+
 - Each day row is a horizontally scrolling container (overflow-x: auto, scroll-snap-x: mandatory)
-- Scroll arrows (ChevronLeft / ChevronRight, 32px touch target, muted background, terracotta on hover) appear at left/right edges when overflow is detected
+- Scroll arrows (ChevronLeft / ChevronRight icons, 32px touch target, muted background, terracotta on hover) appear at left/right edges when overflow is detected
+- Scroll left button: `aria-label="Scroll left"`
+- Scroll right button: `aria-label="Scroll right"`
 - On mobile: no scroll arrows — native swipe only
 - Cards snap to nearest card edge (scroll-snap-align: start, 16px scroll padding)
 
@@ -141,16 +151,16 @@ Category icon assignments (Claude's discretion, locked here):
 - Open Day: `Sun`
 
 ### Day header
-- Format: "DAY ONE" (small-caps label, 11px, semibold, letter-spacing 0.1em) above "Thursday, May 7" (20px semibold)
+- Format: "DAY ONE" (all-caps label, 12px, weight 700, letter-spacing 0.1em) above "Thursday, May 7" (18px, weight 700)
 - Arrival day: left border 4px primary (terracotta), "Arrival Day" label in muted-foreground 12px below date
 - Departure day: same left border treatment, "Departure Day" label
 - Timezone notice: single line below itinerary page title — "All times are Italy time (CEST)" — 12px, muted-foreground, italic. Appears once at page top, not per-event.
 
 ### Sidebar (desktop, lg+)
 - 240px fixed width, height: 100vh, sticky top-0
-- Top section: app title ("Berwick goes to Tuscany 2026") in Playfair Display 16px italic, trip dates below in 12px muted-foreground
+- Top section: app title ("Berwick goes to Tuscany 2026") in Playfair Display 18px italic, trip dates below in 12px muted-foreground
 - Nav links: "Itinerary" (Map icon: `CalendarDays`) and "Map" (`Map` icon), 40px height, 16px horizontal padding, full-width
-- Active link: terracotta left border 3px, primary text color, primary/10 background
+- Active link: terracotta left border 3px, primary text color, primary/10 background, weight 700
 - Bottom section: user avatar (32px circle) + display name, "Edit Profile" ghost button
 
 ### Mobile bottom tab bar
@@ -171,7 +181,7 @@ Category icon assignments (Claude's discretion, locked here):
 - Hero image: if event has cover_image_url, show at top of panel, 160px height, object-fit cover, full width
 - No hero: no placeholder — description starts at top of panel content
 - Google Maps embed: 240px height iframe, full panel width, shown below description when address is present
-- Address display: muted-foreground 13px text above the map embed
+- Address display: muted-foreground 12px text above the map embed
 - Attendee list: horizontal avatar strip (AvatarStrip) below RSVP button, with names on hover tooltip
 
 ### Event form (address field)
@@ -215,6 +225,8 @@ Category icon assignments (Claude's discretion, locked here):
 | Map view empty state | "Add location details to events to see them on the map." |
 | Profile saved toast | "Profile updated" |
 | Network error (generic) | "Something went wrong. Please try again." |
+| Scroll left button (aria-label) | "Scroll left" |
+| Scroll right button (aria-label) | "Scroll right" |
 
 Source: CONTEXT.md D-24 (empty state), D-01/D-02/D-03 (timezone), D-10/D-11 (login page branding).
 
