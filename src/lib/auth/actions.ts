@@ -20,6 +20,8 @@ export async function signUp(formData: FormData) {
     redirect('/signup?error=' + encodeURIComponent(parsed.error.errors[0].message))
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+
   const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
@@ -27,6 +29,7 @@ export async function signUp(formData: FormData) {
       data: {
         display_name: parsed.data.display_name,
       },
+      emailRedirectTo: `${siteUrl}/auth/callback`,
     },
   })
 
