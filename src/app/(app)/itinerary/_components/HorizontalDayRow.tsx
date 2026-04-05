@@ -47,7 +47,7 @@ export function HorizontalDayRow({ events, onEventClick }: HorizontalDayRowProps
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full min-w-0">
       {/* Scroll arrow — left (desktop only) */}
       <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10">
         {canScrollLeft && (
@@ -65,7 +65,8 @@ export function HorizontalDayRow({ events, onEventClick }: HorizontalDayRowProps
       {/* Card row */}
       <div
         ref={containerRef}
-        className="flex gap-4 overflow-x-scroll pb-2 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="flex gap-4 overflow-x-auto pb-2 px-1 w-full max-w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        style={{ touchAction: 'pan-x pan-y', WebkitOverflowScrolling: 'touch' }}
       >
         {events.map((event) => (
           <div

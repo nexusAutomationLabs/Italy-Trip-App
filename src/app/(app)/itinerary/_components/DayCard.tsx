@@ -35,7 +35,7 @@ export function DayCard({ date, events, onEventClick, onAddEvent, currentUserId,
   void isAdmin
 
   return (
-    <section className={`space-y-3 ${isSpecialDay ? 'border-l-4 border-primary pl-4' : ''}`}>
+    <section className={`min-w-0 space-y-3 ${isSpecialDay ? 'border-l-4 border-primary pl-4' : ''}`}>
       {/* Day header */}
       <div className="flex items-start justify-between gap-2">
         <div className="space-y-0.5">

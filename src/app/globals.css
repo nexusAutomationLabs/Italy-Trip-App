@@ -176,6 +176,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html,
+  body {
+    /* Prevent any page-level horizontal scroll — nested scroll containers
+     * (e.g. HorizontalDayRow) still scroll internally on iOS. */
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
   body {
     @apply bg-background text-foreground;
   }
