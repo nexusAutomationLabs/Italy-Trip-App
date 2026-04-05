@@ -108,6 +108,7 @@
   --chart-5: oklch(0.262 0.04 50);
 
   /* Sidebar */
+  --sidebar-width: 240px;
   --sidebar: oklch(0.975 0.012 75);
   --sidebar-foreground: oklch(0.262 0.04 50);
   --sidebar-primary: oklch(0.555 0.152 38.5);
