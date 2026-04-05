@@ -12,6 +12,7 @@ export async function signUp(formData: FormData) {
     display_name: formData.get('display_name') as string,
     email: formData.get('email') as string,
     password: formData.get('password') as string,
+    confirm_password: formData.get('confirm_password') as string,
   }
 
   // Server-side validation (trusted -- client validation is for UX only)

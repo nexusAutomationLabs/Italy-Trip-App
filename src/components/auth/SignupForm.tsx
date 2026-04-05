@@ -27,6 +27,7 @@ export function SignupForm() {
     formData.set('display_name', data.display_name)
     formData.set('email', data.email)
     formData.set('password', data.password)
+    formData.set('confirm_password', data.confirm_password)
     await signUp(formData)
   }
 
