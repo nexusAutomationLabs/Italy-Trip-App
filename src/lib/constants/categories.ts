@@ -1,4 +1,13 @@
+import { Utensils, Camera, Users, MapPin, Sun, type LucideIcon } from 'lucide-react'
 import type { EventCategory } from '@/types/database.types'
+
+export const CATEGORY_ICONS: Record<EventCategory, LucideIcon> = {
+  dinner: Utensils,
+  excursion: Camera,
+  group_activity: Users,
+  travel: MapPin,
+  open_day: Sun,
+}
 
 export const CATEGORY_STYLES: Record<EventCategory, string> = {
   dinner:         'bg-primary/15 text-primary',
