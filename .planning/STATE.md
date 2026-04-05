@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: verifying
-stopped_at: Completed 03-03-PLAN.md
-last_updated: "2026-04-03T23:34:43.745Z"
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-04-05T00:23:31.921Z"
 last_activity: 2026-04-03
 progress:
   total_phases: 4
@@ -60,6 +60,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-rsvp-and-event-mutations P01 | 5min | 2 tasks | 19 files |
 | Phase 03-rsvp-and-event-mutations P02 | 4min | 2 tasks | 7 files |
 | Phase 03-rsvp-and-event-mutations P03 | 3min | 2 tasks | 5 files |
+| Phase 04-polish-and-comments P01 | 6min | 1 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,8 @@ Recent decisions affecting current work:
 - [Phase 03-rsvp-and-event-mutations]: base-ui DropdownMenuTrigger does not support asChild — style trigger element directly with className
 - [Phase 03-rsvp-and-event-mutations]: Comments fetched as nested Supabase select on events query rather than separate client fetch — simpler for 8 users with few comments
 - [Phase 03-rsvp-and-event-mutations]: CommentList delete button uses group-hover:opacity-100 Tailwind pattern — visible only on hover, keeping UI clean
+- [Phase 04-polish-and-comments]: Supabase CLI not available; migration SQL provided as file in supabase/migrations/ for manual execution via Supabase Dashboard
+- [Phase 04-polish-and-comments]: Google Maps API key step skipped per user instruction; user will add NEXT_PUBLIC_GOOGLE_MAPS_API_KEY manually to .env.local and Vercel
 
 ### Pending Todos
 
@@ -99,6 +102,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-03T23:30:29.134Z
-Stopped at: Completed 03-03-PLAN.md
+Last session: 2026-04-05T00:23:31.919Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
