@@ -41,7 +41,10 @@ function CommentItem({ comment, canDelete }: { comment: CommentRow; canDelete: b
 
   function handleDelete() {
     startTransition(async () => {
-      await deleteComment(comment.id)
+      const result = await deleteComment(comment.id)
+      if (!result.success) {
+        window.alert(result.error ?? 'Unable to delete comment')
+      }
     })
   }
 
@@ -70,9 +73,10 @@ function CommentItem({ comment, canDelete }: { comment: CommentRow; canDelete: b
         <Button
           variant="ghost"
           size="icon"
-          className="size-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+          className="size-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100 transition-opacity shrink-0"
           onClick={handleDelete}
           disabled={isPending}
+          type="button"
           aria-label="Delete comment"
         >
           <Trash2 className="size-3 text-muted-foreground" />
