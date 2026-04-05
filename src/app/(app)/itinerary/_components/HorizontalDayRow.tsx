@@ -65,8 +65,8 @@ export function HorizontalDayRow({ events, onEventClick }: HorizontalDayRowProps
       {/* Card row */}
       <div
         ref={containerRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-        style={{ scrollSnapType: 'x mandatory', scrollPaddingLeft: '16px' }}
+        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 px-1 overscroll-x-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        style={{ scrollSnapType: 'x proximity', scrollPaddingLeft: '16px', WebkitOverflowScrolling: 'touch' }}
       >
         {events.map((event) => (
           <div
