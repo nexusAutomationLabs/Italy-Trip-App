@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 4 UI-SPEC approved
-last_updated: "2026-04-05T00:16:36.976Z"
-last_activity: 2026-04-05 -- Phase 04 execution started
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-04-05T00:31:10.934Z"
+last_activity: 2026-04-05
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 13
-  completed_plans: 8
+  completed_plans: 11
   percent: 0
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 ## Current Position
 
 Phase: 04 (polish-and-comments) — EXECUTING
-Plan: 2 of 5
-Status: Executing Phase 04
-Last activity: 2026-04-05 -- Phase 04 Plan 01 complete
+Plan: 4 of 5
+Status: Ready to execute
+Last activity: 2026-04-05
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -60,6 +60,8 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-rsvp-and-event-mutations P01 | 5min | 2 tasks | 19 files |
 | Phase 03-rsvp-and-event-mutations P02 | 4min | 2 tasks | 7 files |
 | Phase 03-rsvp-and-event-mutations P03 | 3min | 2 tasks | 5 files |
+| Phase 04-polish-and-comments P02 | 8min | 2 tasks | 6 files |
+| Phase 04-polish-and-comments P03 | 10min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -87,6 +89,10 @@ Recent decisions affecting current work:
 - [Phase 03-rsvp-and-event-mutations]: base-ui DropdownMenuTrigger does not support asChild — style trigger element directly with className
 - [Phase 03-rsvp-and-event-mutations]: Comments fetched as nested Supabase select on events query rather than separate client fetch — simpler for 8 users with few comments
 - [Phase 03-rsvp-and-event-mutations]: CommentList delete button uses group-hover:opacity-100 Tailwind pattern — visible only on hover, keeping UI clean
+- [Phase 04-polish-and-comments]: AppSidebar uses hidden lg:flex directly rather than shadcn collapsible variant — fixed desktop-only sidebar, no toggle needed
+- [Phase 04-polish-and-comments]: MobileTabBar is separate component with fixed positioning and safe area, not a shadcn Tabs instance
+- [Phase 04-polish-and-comments]: getCategoryBgColor extracts only bg-* classes from CATEGORY_STYLES for EventCard color strip to avoid text-color leaking into background
+- [Phase 04-polish-and-comments]: HorizontalDayRow scroll arrows use ResizeObserver + scroll listener to keep canScrollLeft/canScrollRight in sync with layout changes
 
 ### Pending Todos
 
@@ -99,6 +105,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-04T23:49:13.977Z
-Stopped at: Phase 4 UI-SPEC approved
-Resume file: .planning/phases/04-polish-and-comments/04-UI-SPEC.md
+Last session: 2026-04-05T00:31:05.707Z
+Stopped at: Completed 04-02-PLAN.md
+Resume file: None
