@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-04-05T00:31:15.713Z"
+stopped_at: Completed 04-04-PLAN.md
+last_updated: "2026-04-05T00:38:28.933Z"
 last_activity: 2026-04-05
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 13
-  completed_plans: 11
+  completed_plans: 12
   percent: 0
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 ## Current Position
 
 Phase: 04 (polish-and-comments) — EXECUTING
-Plan: 4 of 5
+Plan: 5 of 5
 Status: Ready to execute
 Last activity: 2026-04-05
 
@@ -62,6 +62,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-rsvp-and-event-mutations P03 | 3min | 2 tasks | 5 files |
 | Phase 04-polish-and-comments P02 | 8min | 2 tasks | 6 files |
 | Phase 04-polish-and-comments P03 | 10min | 2 tasks | 7 files |
+| Phase 04-polish-and-comments P04 | 12min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -93,6 +94,8 @@ Recent decisions affecting current work:
 - [Phase 04-polish-and-comments]: MobileTabBar is separate component with fixed positioning and safe area, not a shadcn Tabs instance
 - [Phase 04-polish-and-comments]: getCategoryBgColor extracts only bg-* classes from CATEGORY_STYLES for EventCard color strip to avoid text-color leaking into background
 - [Phase 04-polish-and-comments]: HorizontalDayRow scroll arrows use ResizeObserver + scroll listener to keep canScrollLeft/canScrollRight in sync with layout changes
+- [Phase 04-polish-and-comments]: Upload done client-side via browser Supabase client to bypass 1 MB server action body limit
+- [Phase 04-polish-and-comments]: GoogleMapsEmbed renders conditionally when both event.address and NEXT_PUBLIC_GOOGLE_MAPS_API_KEY exist
 
 ### Pending Todos
 
@@ -105,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-05T00:31:15.710Z
-Stopped at: Completed 04-03-PLAN.md
+Last session: 2026-04-05T00:38:28.930Z
+Stopped at: Completed 04-04-PLAN.md
 Resume file: None
