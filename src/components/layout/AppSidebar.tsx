@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CalendarDays, Map } from 'lucide-react'
@@ -19,6 +20,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
 import { cn } from '@/lib/utils'
+import { ProfileModal } from '@/components/layout/ProfileModal'
 
 interface AppSidebarProps {
   user: User
@@ -33,6 +35,7 @@ const navItems = [
 
 export function AppSidebar({ user, isAdmin, profile }: AppSidebarProps) {
   const pathname = usePathname()
+  const [profileModalOpen, setProfileModalOpen] = useState(false)
 
   const displayName =
     profile?.display_name ??
@@ -99,6 +102,13 @@ export function AppSidebar({ user, isAdmin, profile }: AppSidebarProps) {
                 Admin
               </span>
             )}
+            <button
+              type="button"
+              onClick={() => setProfileModalOpen(true)}
+              className="block text-[12px] text-muted-foreground hover:text-foreground mt-0.5"
+            >
+              Edit Profile
+            </button>
           </div>
           <form action={signOut} className="shrink-0">
             <Button type="submit" variant="ghost" size="sm" className="text-xs px-2">
@@ -107,6 +117,14 @@ export function AppSidebar({ user, isAdmin, profile }: AppSidebarProps) {
           </form>
         </div>
       </SidebarFooter>
+
+      <ProfileModal
+        open={profileModalOpen}
+        onOpenChange={setProfileModalOpen}
+        userId={user.id}
+        currentDisplayName={profile?.display_name ?? null}
+        currentAvatarUrl={profile?.avatar_url ?? null}
+      />
     </Sidebar>
   )
 }
