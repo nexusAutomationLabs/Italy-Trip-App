@@ -79,7 +79,7 @@ Plans:
   3. The visual design is consistent and polished across all screens and device sizes
 **Plans**: 5 plans
 Plans:
-- [ ] 04-01-PLAN.md — Install dependencies, DB migration (new columns + storage buckets), update types, Google Maps API key
+- [x] 04-01-PLAN.md — Install dependencies, DB migration (new columns + storage buckets), update types, Google Maps API key
 - [ ] 04-02-PLAN.md — Sidebar navigation + mobile tab bar, login page split-screen redesign
 - [ ] 04-03-PLAN.md — Itinerary horizontal card layout, day headers with ordinals, timezone label, empty states
 - [ ] 04-04-PLAN.md — Avatar uploads, event cover photos, Google Maps embed in detail, profile modal
@@ -96,4 +96,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation and Auth | 2/3 | In Progress|  |
 | 2. Itinerary and Event Views | 1/2 | In Progress|  |
 | 3. RSVP and Event Mutations | 3/3 | Complete   | 2026-04-03 |
-| 4. Polish and Comments | 0/5 | Not started | - |
+| 4. Polish and Comments | 1/5 | In Progress | - |
