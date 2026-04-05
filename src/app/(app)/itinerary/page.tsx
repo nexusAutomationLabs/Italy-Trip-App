@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { ItineraryClient } from './_components/ItineraryClient'
+import { TripCountdown } from './_components/TripCountdown'
 import type { EventRow } from '@/types/database.types'
 
 export default async function ItineraryPage() {
@@ -34,6 +35,9 @@ export default async function ItineraryPage() {
           <p className="mt-2 text-sm text-muted-foreground">
             A ten-day journey through the heart of Tuscany — May 7 to 16, 2026
           </p>
+        </div>
+        <div className="hidden lg:block absolute right-8 bottom-8 z-10">
+          <TripCountdown />
         </div>
       </div>
 
