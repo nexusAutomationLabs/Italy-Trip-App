@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { MapPin } from 'lucide-react'
 import { format } from 'date-fns'
+import { GoogleMapsEmbed } from '@next/third-parties/google'
 import {
   Sheet,
   SheetContent,
@@ -71,6 +72,15 @@ function EventDetails({
 
   return (
     <div className="space-y-4 p-4">
+      {/* Hero image (D-20) */}
+      {event.cover_image_url && (
+        <img
+          src={event.cover_image_url}
+          alt=""
+          className="w-full h-[160px] object-cover rounded-md"
+        />
+      )}
+
       <div className="flex items-start justify-between gap-2">
         <Badge className={CATEGORY_STYLES[event.category]}>
           {CATEGORY_LABELS[event.category]}
@@ -97,6 +107,21 @@ function EventDetails({
           {event.location_name || 'View location'}
         </a>
       )}
+
+      {/* Google Maps embed (D-17) */}
+      {event.address && process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
+        <div className="space-y-1">
+          <p className="text-xs text-muted-foreground">{event.address}</p>
+          <GoogleMapsEmbed
+            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+            height={240}
+            width="100%"
+            mode="place"
+            q={encodeURIComponent(event.address)}
+          />
+        </div>
+      )}
+
       <Separator />
       <RsvpButton
         eventId={event.id}

@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 interface Attendee {
   user_id: string
-  profiles: { display_name: string | null } | null
+  profiles: { display_name: string | null; avatar_url: string | null } | null
 }
 
 interface AttendeeListProps {
@@ -46,6 +46,12 @@ export function AttendeeList({ attendees }: AttendeeListProps) {
         {attendees.map((attendee, index) => (
           <div key={attendee.user_id} className="flex items-center gap-2">
             <Avatar className="size-8">
+              {attendee.profiles?.avatar_url && (
+                <AvatarImage
+                  src={attendee.profiles.avatar_url}
+                  alt={attendee.profiles?.display_name ?? 'Attendee'}
+                />
+              )}
               <AvatarFallback
                 className={`${AVATAR_COLORS[index % AVATAR_COLORS.length]} text-white text-xs font-semibold`}
               >

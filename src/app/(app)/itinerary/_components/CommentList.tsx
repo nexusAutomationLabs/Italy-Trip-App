@@ -4,6 +4,7 @@ import { useTransition } from 'react'
 import { format } from 'date-fns'
 import { Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { deleteComment } from '@/lib/actions/comment-actions'
 import type { CommentRow } from '@/types/database.types'
 
@@ -45,10 +46,19 @@ function CommentItem({ comment, canDelete }: { comment: CommentRow; canDelete: b
   }
 
   const displayName = comment.profiles?.display_name ?? 'Unknown'
+  const avatarInitial = displayName.charAt(0).toUpperCase()
   const timestamp = format(new Date(comment.created_at), 'MMM d, h:mm a')
 
   return (
     <div className="flex items-start gap-2 group">
+      <Avatar className="size-6 shrink-0 mt-0.5">
+        {comment.profiles?.avatar_url && (
+          <AvatarImage src={comment.profiles.avatar_url} alt={displayName} />
+        )}
+        <AvatarFallback className="bg-primary/20 text-primary text-[10px] font-semibold">
+          {avatarInitial}
+        </AvatarFallback>
+      </Avatar>
       <div className="flex-1 min-w-0">
         <div className="flex items-baseline gap-2">
           <span className="text-sm font-semibold">{displayName}</span>

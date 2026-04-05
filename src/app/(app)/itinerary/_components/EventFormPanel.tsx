@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useTransition } from 'react'
+import { useEffect, useTransition, useState, useRef } from 'react'
 import {
   Sheet,
   SheetContent,
@@ -32,6 +32,7 @@ import { useMediaQuery } from '@/hooks/use-media-query'
 import { eventSchema } from '@/lib/actions/event-schemas'
 import type { EventFormData } from '@/lib/actions/event-schemas'
 import { createEvent, updateEvent } from '@/lib/actions/event-actions'
+import { uploadEventCover } from '@/lib/supabase/storage'
 import { CATEGORY_LABELS } from '@/lib/constants/categories'
 import type { EventRow, EventCategory } from '@/types/database.types'
 import { z } from 'zod'
@@ -50,6 +51,12 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const [isPending, startTransition] = useTransition()
   const isEditMode = !!event
+  const [coverFile, setCoverFile] = useState<File | null>(null)
+  const [coverPreview, setCoverPreview] = useState<string | null>(
+    event?.cover_image_url ?? null
+  )
+  const [coverError, setCoverError] = useState<string | null>(null)
+  const coverInputRef = useRef<HTMLInputElement>(null)
 
   const form = useForm<EventFormInput>({
     resolver: zodResolver(eventSchema) as never,
@@ -61,7 +68,9 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
           description: event.description ?? undefined,
           location_name: event.location_name ?? undefined,
           location_url: event.location_url ?? undefined,
+          address: event.address ?? undefined,
           category: event.category,
+          cover_image_url: event.cover_image_url ?? undefined,
         }
       : {
           title: '',
@@ -79,24 +88,68 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
         description: event.description ?? undefined,
         location_name: event.location_name ?? undefined,
         location_url: event.location_url ?? undefined,
+        address: event.address ?? undefined,
         category: event.category,
+        cover_image_url: event.cover_image_url ?? undefined,
       })
+      setCoverPreview(event.cover_image_url ?? null)
+      setCoverFile(null)
     } else {
       form.reset({
         title: '',
         event_date: defaultDate ?? '',
         category: 'open_day' as EventCategory,
       })
+      setCoverPreview(null)
+      setCoverFile(null)
     }
   }, [event, defaultDate, form])
 
+  function handleCoverFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    if (file.size > 5 * 1024 * 1024) {
+      setCoverError('Photo must be under 5 MB. Please choose a smaller file.')
+      return
+    }
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      setCoverError('Please upload a JPEG, PNG, or WebP image.')
+      return
+    }
+
+    setCoverError(null)
+    setCoverFile(file)
+    setCoverPreview(URL.createObjectURL(file))
+  }
+
   function onSubmit(data: EventFormInput) {
     startTransition(async () => {
+      let coverImageUrl: string | undefined = data.cover_image_url ?? undefined
+
+      if (coverFile) {
+        // For new events, use a temp UUID for the upload path
+        const uploadId = isEditMode ? event!.id : crypto.randomUUID()
+        try {
+          coverImageUrl = await uploadEventCover(coverFile, uploadId)
+        } catch (err) {
+          setCoverError(err instanceof Error ? err.message : 'Upload failed.')
+          return
+        }
+      }
+
+      const submitData: EventFormData = {
+        ...(data as EventFormData),
+        cover_image_url: coverImageUrl ?? null,
+      }
+
       const result = isEditMode
-        ? await updateEvent(event!.id, data as EventFormData)
-        : await createEvent(data as EventFormData)
+        ? await updateEvent(event!.id, submitData)
+        : await createEvent(submitData)
       if (result.success) {
         form.reset()
+        setCoverFile(null)
+        setCoverPreview(null)
         onClose()
       }
     })
@@ -106,6 +159,39 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
 
   const formContent = (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 p-4">
+      {/* Cover Photo */}
+      <div className="space-y-2">
+        <Label htmlFor="cover_photo">Cover Photo</Label>
+        {coverPreview && (
+          <img
+            src={coverPreview}
+            alt="Cover photo preview"
+            className="object-cover rounded-md w-full h-[80px]"
+          />
+        )}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="text-sm text-primary hover:underline cursor-pointer"
+            onClick={() => coverInputRef.current?.click()}
+          >
+            {coverPreview ? 'Change photo' : 'Upload a photo'}
+          </button>
+          <input
+            ref={coverInputRef}
+            id="cover_photo"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            className="hidden"
+            onChange={handleCoverFileChange}
+          />
+          <span className="text-xs text-muted-foreground">JPEG, PNG, or WebP · Max 5 MB</span>
+        </div>
+        {coverError && (
+          <p className="text-sm text-destructive">{coverError}</p>
+        )}
+      </div>
+
       <div className="space-y-2">
         <Label htmlFor="title">Title *</Label>
         <Input id="title" {...form.register('title')} placeholder="Event title" />
@@ -166,6 +252,15 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
           id="location_name"
           {...form.register('location_name')}
           placeholder="e.g. Trattoria Mario"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="address">Address</Label>
+        <Input
+          id="address"
+          {...form.register('address')}
+          placeholder="Street address or place name"
         />
       </div>
 

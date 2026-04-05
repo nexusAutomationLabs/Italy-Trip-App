@@ -12,10 +12,12 @@ export async function createEvent(data: EventFormData): Promise<{ success: boole
   const parsed = eventSchema.safeParse(data)
   if (!parsed.success) return { success: false, error: parsed.error.errors[0].message }
 
-  // Coerce empty location_url to null
+  // Coerce empty strings to null for URL/text fields
   const insertData = {
     ...parsed.data,
     location_url: parsed.data.location_url === '' ? null : parsed.data.location_url,
+    address: parsed.data.address === '' ? null : (parsed.data.address ?? null),
+    cover_image_url: parsed.data.cover_image_url === '' ? null : (parsed.data.cover_image_url ?? null),
     created_by: user.id,
   }
 
@@ -37,6 +39,8 @@ export async function updateEvent(eventId: string, data: EventFormData): Promise
   const updateData = {
     ...parsed.data,
     location_url: parsed.data.location_url === '' ? null : parsed.data.location_url,
+    address: parsed.data.address === '' ? null : (parsed.data.address ?? null),
+    cover_image_url: parsed.data.cover_image_url === '' ? null : (parsed.data.cover_image_url ?? null),
   }
 
   const { error } = await supabase.from('events').update(updateData).eq('id', eventId)
