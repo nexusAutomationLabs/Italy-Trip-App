@@ -167,6 +167,11 @@
   --sidebar-ring: oklch(0.66 0.145 38.5);
 }
 
+/* Google Places Autocomplete dropdown — must sit above shadcn Sheet/Dialog overlays */
+.pac-container {
+  z-index: 10000 !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
