@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 04-04-PLAN.md
-last_updated: "2026-04-05T00:38:28.933Z"
+status: verifying
+stopped_at: "Completed 04-05-PLAN.md (checkpoint: awaiting human verification Task 3)"
+last_updated: "2026-04-05T00:43:37.078Z"
 last_activity: 2026-04-05
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 13
-  completed_plans: 12
+  completed_plans: 13
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 
 Phase: 04 (polish-and-comments) — EXECUTING
 Plan: 5 of 5
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-04-05
 
 Progress: [░░░░░░░░░░] 0%
@@ -63,6 +63,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 04-polish-and-comments P02 | 8min | 2 tasks | 6 files |
 | Phase 04-polish-and-comments P03 | 10min | 2 tasks | 7 files |
 | Phase 04-polish-and-comments P04 | 12min | 2 tasks | 10 files |
+| Phase 04-polish-and-comments P05 | 15 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,8 @@ Recent decisions affecting current work:
 - [Phase 04-polish-and-comments]: HorizontalDayRow scroll arrows use ResizeObserver + scroll listener to keep canScrollLeft/canScrollRight in sync with layout changes
 - [Phase 04-polish-and-comments]: Upload done client-side via browser Supabase client to bypass 1 MB server action body limit
 - [Phase 04-polish-and-comments]: GoogleMapsEmbed renders conditionally when both event.address and NEXT_PUBLIC_GOOGLE_MAPS_API_KEY exist
+- [Phase 04-polish-and-comments]: APIProvider placed at ItineraryClient (client boundary) rather than server page — required for useMapsLibrary hooks in @vis.gl/react-google-maps
+- [Phase 04-polish-and-comments]: Legacy google.maps.places.Autocomplete used with componentRestrictions: italy; gracefully degrades to plain input without API key
 
 ### Pending Todos
 
@@ -108,6 +111,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-05T00:38:28.930Z
-Stopped at: Completed 04-04-PLAN.md
+Last session: 2026-04-05T00:43:37.075Z
+Stopped at: Completed 04-05-PLAN.md (checkpoint: awaiting human verification Task 3)
 Resume file: None

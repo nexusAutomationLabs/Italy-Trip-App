@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 1: Foundation and Auth** - Authenticated shell deployed to Vercel with secure Supabase setup
 - [ ] **Phase 2: Itinerary and Event Views** - Pre-seeded day-by-day itinerary with full Tuscany visual design
 - [x] **Phase 3: RSVP and Event Mutations** - Full interactive app — users can RSVP, create, edit, and delete events (completed 2026-04-03)
-- [ ] **Phase 4: Polish and Comments** - Event comments, edit form, and pre-trip refinements
+- [x] **Phase 4: Polish and Comments** - Event comments, edit form, and pre-trip refinements (completed 2026-04-05)
 
 ## Phase Details
 
@@ -83,7 +83,7 @@ Plans:
 - [x] 04-02-PLAN.md — Sidebar navigation + mobile tab bar, login page split-screen redesign
 - [x] 04-03-PLAN.md — Itinerary horizontal card layout, day headers with ordinals, timezone label, empty states
 - [x] 04-04-PLAN.md — Avatar uploads, event cover photos, Google Maps embed in detail, profile modal
-- [ ] 04-05-PLAN.md — Map view page with event pins, Google Places Autocomplete, final verification
+- [x] 04-05-PLAN.md — Map view page with event pins, Google Places Autocomplete, final verification
 **UI hint**: yes
 
 ## Progress
@@ -96,4 +96,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation and Auth | 2/3 | In Progress|  |
 | 2. Itinerary and Event Views | 1/2 | In Progress|  |
 | 3. RSVP and Event Mutations | 3/3 | Complete   | 2026-04-03 |
-| 4. Polish and Comments | 4/5 | In Progress|  |
+| 4. Polish and Comments | 5/5 | Complete   | 2026-04-05 |
