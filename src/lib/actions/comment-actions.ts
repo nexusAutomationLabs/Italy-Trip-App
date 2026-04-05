@@ -1,7 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { commentSchema } from './event-schemas'
 
 export async function createComment(data: { content: string; event_id: string }): Promise<{ success: boolean; error?: string }> {
@@ -31,22 +31,29 @@ export async function deleteComment(commentId: string): Promise<{ success: boole
 
   const isAdmin = user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL
 
-  // Check ownership (admin can delete any)
-  if (!isAdmin) {
-    const { data: comment } = await supabase
-      .from('comments')
-      .select('user_id')
-      .eq('id', commentId)
-      .single()
+  const { data: comment, error: fetchError } = await supabase
+    .from('comments')
+    .select('id, user_id')
+    .eq('id', commentId)
+    .maybeSingle()
 
-    if (!comment) return { success: false, error: 'Comment not found' }
-    if (comment.user_id !== user.id) {
-      return { success: false, error: 'Not authorized' }
-    }
+  if (fetchError) return { success: false, error: fetchError.message }
+  if (!comment) return { success: false, error: 'Comment not found' }
+
+  const isOwner = comment.user_id === user.id
+  if (!isOwner && !isAdmin) {
+    return { success: false, error: 'Not authorized' }
   }
 
-  const { error } = await supabase.from('comments').delete().eq('id', commentId)
+  // Admin deletes can bypass RLS ownership checks using service role.
+  const deleteClient = isAdmin ? createServiceClient() : supabase
+  const { error, count } = await deleteClient
+    .from('comments')
+    .delete({ count: 'exact' })
+    .eq('id', commentId)
+
   if (error) return { success: false, error: error.message }
+  if ((count ?? 0) === 0) return { success: false, error: 'Comment not found' }
 
   revalidatePath('/itinerary')
   return { success: true }

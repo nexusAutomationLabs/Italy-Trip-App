@@ -1,6 +1,7 @@
 'use client'
 
 import { useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { format } from 'date-fns'
 import { Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -38,11 +39,14 @@ export function CommentList({ comments, currentUserId, isAdmin }: CommentListPro
 
 function CommentItem({ comment, canDelete }: { comment: CommentRow; canDelete: boolean }) {
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   function handleDelete() {
     startTransition(async () => {
       const result = await deleteComment(comment.id)
-      if (!result.success) {
+      if (result.success) {
+        router.refresh()
+      } else {
         window.alert(result.error ?? 'Unable to delete comment')
       }
     })

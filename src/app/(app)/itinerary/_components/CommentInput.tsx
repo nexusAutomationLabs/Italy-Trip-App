@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Send } from 'lucide-react'
@@ -13,6 +14,7 @@ interface CommentInputProps {
 export function CommentInput({ eventId }: CommentInputProps) {
   const [content, setContent] = useState('')
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   function handleSubmit() {
     if (!content.trim()) return
@@ -20,6 +22,9 @@ export function CommentInput({ eventId }: CommentInputProps) {
       const result = await createComment({ content: content.trim(), event_id: eventId })
       if (result.success) {
         setContent('')
+        router.refresh()
+      } else {
+        window.alert(result.error ?? 'Unable to add comment')
       }
     })
   }
