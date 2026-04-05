@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from '@vis.gl/react-google-maps'
+import { useState, useEffect } from 'react'
+import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow, useMap } from '@vis.gl/react-google-maps'
 import type { EventCategory } from '@/types/database.types'
 
 interface MapEvent {
@@ -27,12 +27,29 @@ const CATEGORY_PIN_COLORS: Record<EventCategory, { background: string; glyphColo
   open_day: { background: '#E8E0D5', glyphColor: '#8B7355', borderColor: '#C8BEB0' },
 }
 
-// Florence / Tuscany area default center
-const FLORENCE_CENTER = { lat: 43.7696, lng: 11.2558 }
+// Villa Il Palagio, Rignano sull'Arno — home base for the trip
+const VILLA_CENTER = { lat: 43.6969, lng: 11.4478 }
 
 function MapContent({ events }: MapViewProps) {
+  const map = useMap()
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null)
   const selectedEvent = events.find((e) => e.id === selectedEventId) ?? null
+
+  useEffect(() => {
+    if (!map || events.length === 0) return
+
+    const bounds = new google.maps.LatLngBounds()
+    for (const event of events) {
+      bounds.extend({ lat: event.latitude, lng: event.longitude })
+    }
+
+    if (events.length === 1) {
+      map.setCenter(bounds.getCenter())
+      map.setZoom(14)
+    } else {
+      map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 })
+    }
+  }, [map, events])
 
   if (events.length === 0) {
     return (
@@ -48,8 +65,8 @@ function MapContent({ events }: MapViewProps) {
 
   return (
     <Map
-      defaultCenter={FLORENCE_CENTER}
-      defaultZoom={11}
+      defaultCenter={VILLA_CENTER}
+      defaultZoom={10}
       mapId="DEMO_MAP_ID"
       style={{ width: '100%', height: '100%' }}
       gestureHandling="greedy"
