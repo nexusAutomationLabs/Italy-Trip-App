@@ -65,14 +65,12 @@ export function HorizontalDayRow({ events, onEventClick }: HorizontalDayRowProps
       {/* Card row */}
       <div
         ref={containerRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 px-1 overscroll-x-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-        style={{ scrollSnapType: 'x proximity', scrollPaddingLeft: '16px', WebkitOverflowScrolling: 'touch' }}
+        className="flex gap-4 overflow-x-scroll pb-2 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {events.map((event) => (
           <div
             key={event.id}
-            className="flex-shrink-0 w-[280px]"
-            style={{ scrollSnapAlign: 'start' }}
+            className="shrink-0 w-[280px]"
           >
             <EventCard event={event} onClick={onEventClick} />
           </div>

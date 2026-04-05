@@ -32,7 +32,7 @@ export default async function AppLayout({
     <SidebarProvider>
       <div className="flex min-h-svh w-full">
         <AppSidebar user={user} isAdmin={isAdmin} profile={profile} />
-        <main className="flex-1 min-w-0 overflow-x-clip pb-16 lg:pb-0">
+        <main className="flex-1 min-w-0 overflow-hidden pb-16 lg:pb-0">
           {children}
         </main>
         <MobileTabBar />
