@@ -11,16 +11,19 @@ export interface Database {
         Row: {
           id: string
           display_name: string | null
+          avatar_url: string | null
           updated_at: string | null
         }
         Insert: {
           id: string
           display_name?: string | null
+          avatar_url?: string | null
           updated_at?: string | null
         }
         Update: {
           id?: string
           display_name?: string | null
+          avatar_url?: string | null
           updated_at?: string | null
         }
         Relationships: []
@@ -36,6 +39,10 @@ export interface Database {
           category: EventCategory
           location_name: string | null
           location_url: string | null
+          cover_image_url: string | null
+          address: string | null
+          latitude: number | null
+          longitude: number | null
           created_by: string | null
           created_at: string
         }
@@ -49,6 +56,10 @@ export interface Database {
           category: EventCategory
           location_name?: string | null
           location_url?: string | null
+          cover_image_url?: string | null
+          address?: string | null
+          latitude?: number | null
+          longitude?: number | null
           created_by?: string | null
           created_at?: string
         }
@@ -62,6 +73,10 @@ export interface Database {
           category?: EventCategory
           location_name?: string | null
           location_url?: string | null
+          cover_image_url?: string | null
+          address?: string | null
+          latitude?: number | null
+          longitude?: number | null
           created_by?: string | null
           created_at?: string
         }
@@ -149,10 +164,10 @@ export interface Database {
 }
 
 export type EventRow = Database['public']['Tables']['events']['Row'] & {
-  rsvps: { user_id: string; profiles: { display_name: string | null } | null }[]
+  rsvps: { user_id: string; profiles: { display_name: string | null; avatar_url: string | null } | null }[]
   comments: CommentRow[]
 }
 
 export type CommentRow = Database['public']['Tables']['comments']['Row'] & {
-  profiles: { display_name: string | null } | null
+  profiles: { display_name: string | null; avatar_url: string | null } | null
 }

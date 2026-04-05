@@ -8,6 +8,10 @@ export const eventSchema = z.object({
   location_name: z.string().max(200).nullable().optional(),
   location_url: z.string().url('Invalid URL').or(z.literal('')).nullable().optional(),
   category: z.enum(['dinner', 'excursion', 'group_activity', 'travel', 'open_day']).default('open_day'),
+  address: z.string().max(500).nullable().optional(),
+  latitude: z.coerce.number().nullable().optional(),
+  longitude: z.coerce.number().nullable().optional(),
+  cover_image_url: z.string().url().or(z.literal('')).nullable().optional(),
 })
 
 export type EventFormData = z.infer<typeof eventSchema>
