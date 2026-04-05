@@ -18,16 +18,21 @@ export function AddressAutocomplete({
   className,
 }: AddressAutocompleteProps) {
   const inputRef = useRef<HTMLInputElement>(null)
+  const onSelectRef = useRef(onSelect)
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null)
   const placesLib = useMapsLibrary('places')
 
   useEffect(() => {
-    if (!placesLib || !inputRef.current) return
+    onSelectRef.current = onSelect
+  }, [onSelect])
 
-    // Use legacy Autocomplete — widely supported, simple API
+  useEffect(() => {
+    if (!placesLib || !inputRef.current || autocompleteRef.current) return
+
     const autocomplete = new placesLib.Autocomplete(inputRef.current, {
       fields: ['formatted_address', 'geometry'],
-      componentRestrictions: { country: 'it' },
     })
+    autocompleteRef.current = autocomplete
 
     const listener = autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace()
@@ -36,14 +41,14 @@ export function AddressAutocomplete({
       const address = place.formatted_address
       const lat = place.geometry.location.lat()
       const lng = place.geometry.location.lng()
-      onSelect(address, lat, lng)
+      onSelectRef.current(address, lat, lng)
     })
 
     return () => {
-      // Clean up the listener when the component unmounts or deps change
       google.maps.event.removeListener(listener)
+      autocompleteRef.current = null
     }
-  }, [placesLib, onSelect])
+  }, [placesLib])
 
   return (
     <Input

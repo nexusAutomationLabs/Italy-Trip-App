@@ -10,7 +10,7 @@ export default async function ItineraryPage() {
 
   const { data: events } = await supabase
     .from('events')
-    .select('*, rsvps(user_id, profiles(display_name, avatar_url)), comments(id, user_id, content, created_at, profiles(display_name))')
+    .select('*, rsvps(user_id, profiles(display_name, avatar_url)), comments(id, user_id, content, created_at, profiles(display_name, avatar_url))')
     .order('event_date', { ascending: true })
     .order('start_time', { ascending: true })
     .order('created_at', { ascending: true, referencedTable: 'comments' })

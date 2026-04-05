@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { APIProvider } from '@vis.gl/react-google-maps'
 import { DayCard } from './DayCard'
 import { EventDetailPanel } from './EventDetailPanel'
@@ -18,6 +18,13 @@ export function ItineraryClient({ events, currentUserId, isAdmin, googleMapsApiK
   const [selectedEvent, setSelectedEvent] = useState<EventRow | null>(null)
   const [createFormOpen, setCreateFormOpen] = useState(false)
   const [createFormDate, setCreateFormDate] = useState<string>('')
+
+  useEffect(() => {
+    setSelectedEvent((prev) => {
+      if (!prev) return null
+      return events.find((e) => e.id === prev.id) ?? null
+    })
+  }, [events])
 
   const groupedDays = useMemo(() => {
     const map = new Map<string, EventRow[]>()

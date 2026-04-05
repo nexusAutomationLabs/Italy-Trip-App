@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { MapPin } from 'lucide-react'
+import { MapPin, ExternalLink } from 'lucide-react'
 import { format } from 'date-fns'
-import { GoogleMapsEmbed } from '@next/third-parties/google'
 import {
   Sheet,
   SheetContent,
@@ -108,18 +107,17 @@ function EventDetails({
         </a>
       )}
 
-      {/* Google Maps embed (D-17) */}
-      {event.address && process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
-        <div className="space-y-1">
-          <p className="text-xs text-muted-foreground">{event.address}</p>
-          <GoogleMapsEmbed
-            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-            height={240}
-            width="100%"
-            mode="place"
-            q={encodeURIComponent(event.address)}
-          />
-        </div>
+      {event.address && (
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 rounded-lg border bg-muted/40 px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted"
+        >
+          <MapPin className="size-4 shrink-0 text-primary" />
+          <span className="flex-1 min-w-0 truncate">{event.address}</span>
+          <ExternalLink className="size-3.5 shrink-0" />
+        </a>
       )}
 
       <Separator />
@@ -196,7 +194,7 @@ export function EventDetailPanel({ event, onClose, currentUserId, isAdmin }: Eve
             <DrawerDescription className="sr-only">Event details</DrawerDescription>
           </DrawerHeader>
           {event && (
-            <div className="px-4 pb-6">
+            <div className="px-4 pb-6 overflow-y-auto">
               <EventDetails
                 event={event}
                 currentUserId={currentUserId}
