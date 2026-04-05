@@ -29,27 +29,62 @@ const CATEGORY_PIN_COLORS: Record<EventCategory, { background: string; glyphColo
 
 // Villa Il Palagio, Rignano sull'Arno — home base for the trip
 const VILLA_CENTER = { lat: 43.6969, lng: 11.4478 }
+// Florence — center of the Tuscan focus area
+const FLORENCE_CENTER = { lat: 43.7696, lng: 11.2558 }
+// Radius (km) around Florence to include in the map view — excludes Halifax etc.
+const TUSCANY_RADIUS_KM = 150
+
+// Haversine distance in km between two lat/lng points
+function distanceKm(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const R = 6371
+  const toRad = (v: number) => (v * Math.PI) / 180
+  const dLat = toRad(b.lat - a.lat)
+  const dLng = toRad(b.lng - a.lng)
+  const lat1 = toRad(a.lat)
+  const lat2 = toRad(b.lat)
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.sin(dLng / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2)
+  return 2 * R * Math.asin(Math.sqrt(h))
+}
 
 function MapContent({ events }: MapViewProps) {
   const map = useMap()
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null)
-  const selectedEvent = events.find((e) => e.id === selectedEventId) ?? null
+
+  // Only show markers within the Tuscan region (filters out Halifax, etc.)
+  const tuscanEvents = events.filter(
+    (e) => distanceKm(FLORENCE_CENTER, { lat: e.latitude, lng: e.longitude }) <= TUSCANY_RADIUS_KM
+  )
+  const selectedEvent = tuscanEvents.find((e) => e.id === selectedEventId) ?? null
 
   useEffect(() => {
-    if (!map || events.length === 0) return
+    if (!map) return
+
+    if (tuscanEvents.length === 0) {
+      map.setCenter(VILLA_CENTER)
+      map.setZoom(10)
+      return
+    }
+
+    if (tuscanEvents.length === 1) {
+      map.setCenter({ lat: tuscanEvents[0].latitude, lng: tuscanEvents[0].longitude })
+      map.setZoom(13)
+      return
+    }
 
     const bounds = new google.maps.LatLngBounds()
-    for (const event of events) {
+    for (const event of tuscanEvents) {
       bounds.extend({ lat: event.latitude, lng: event.longitude })
     }
+    map.fitBounds(bounds, { top: 60, right: 60, bottom: 60, left: 60 })
 
-    if (events.length === 1) {
-      map.setCenter(bounds.getCenter())
-      map.setZoom(14)
-    } else {
-      map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 })
-    }
-  }, [map, events])
+    // Clamp max zoom so we never zoom past ~city-level
+    const listener = google.maps.event.addListenerOnce(map, 'idle', () => {
+      if ((map.getZoom() ?? 0) > 12) map.setZoom(12)
+    })
+    return () => google.maps.event.removeListener(listener)
+  }, [map, tuscanEvents])
 
   if (events.length === 0) {
     return (
@@ -65,14 +100,14 @@ function MapContent({ events }: MapViewProps) {
 
   return (
     <Map
-      defaultCenter={VILLA_CENTER}
-      defaultZoom={10}
+      defaultCenter={FLORENCE_CENTER}
+      defaultZoom={9}
       mapId="DEMO_MAP_ID"
       style={{ width: '100%', height: '100%' }}
       gestureHandling="greedy"
       disableDefaultUI={false}
     >
-      {events.map((event) => {
+      {tuscanEvents.map((event) => {
         const colors = CATEGORY_PIN_COLORS[event.category] ?? CATEGORY_PIN_COLORS.open_day
         return (
           <AdvancedMarker
