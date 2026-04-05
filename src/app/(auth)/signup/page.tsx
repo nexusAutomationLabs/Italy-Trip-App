@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { SignupForm } from '@/components/auth/SignupForm'
 
 const TUSCANY_IMAGE_URL =
-  'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=1920&q=80&auto=format&fit=crop'
+  'https://images.unsplash.com/photo-1568930155292-e82d9e298a2a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0'
 
 export default function SignupPage() {
   return (
