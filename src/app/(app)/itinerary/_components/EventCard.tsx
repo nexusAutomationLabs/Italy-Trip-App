@@ -35,7 +35,7 @@ export function EventCard({ event, onClick }: EventCardProps) {
 
   return (
     <button
-      className="min-w-[260px] max-w-[320px] flex-shrink-0 flex flex-col bg-card rounded-lg border border-border cursor-pointer text-left hover:shadow-md hover:border-l-2 hover:border-l-primary transition-all"
+      className="w-full flex flex-col bg-card rounded-lg border border-border cursor-pointer text-left hover:shadow-md hover:border-l-2 hover:border-l-primary transition-all"
       onClick={() => onClick(event)}
       type="button"
     >

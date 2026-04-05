@@ -48,6 +48,13 @@ export function HorizontalDayRow({ events, onEventClick }: HorizontalDayRowProps
 
   return (
     <div className="relative w-full min-w-0">
+      {/* Mobile affordance so users discover horizontal swipe immediately */}
+      {canScrollRight && (
+        <p className="lg:hidden mb-2 px-1 text-[11px] text-muted-foreground">
+          Swipe to see more
+        </p>
+      )}
+
       {/* Scroll arrow — left (desktop only) */}
       <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10">
         {canScrollLeft && (
@@ -65,13 +72,17 @@ export function HorizontalDayRow({ events, onEventClick }: HorizontalDayRowProps
       {/* Card row */}
       <div
         ref={containerRef}
-        className="flex gap-4 overflow-x-auto pb-2 px-1 w-full max-w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-        style={{ touchAction: 'pan-x pan-y', WebkitOverflowScrolling: 'touch' }}
+        className="flex gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-2 px-1 w-full max-w-full scroll-px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        style={{
+          touchAction: 'pan-x pan-y',
+          WebkitOverflowScrolling: 'touch',
+          scrollPaddingInline: '0.25rem',
+        }}
       >
         {events.map((event) => (
           <div
             key={event.id}
-            className="shrink-0 w-[280px]"
+            className="shrink-0 snap-start w-[84vw] max-w-[320px] sm:w-[280px]"
           >
             <EventCard event={event} onClick={onEventClick} />
           </div>

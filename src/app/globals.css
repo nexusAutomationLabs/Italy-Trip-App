@@ -178,10 +178,9 @@
   }
   html,
   body {
-    /* Prevent any page-level horizontal scroll — nested scroll containers
-     * (e.g. HorizontalDayRow) still scroll internally on iOS. */
-    overflow-x: hidden;
-    max-width: 100vw;
+    /* Allow nested horizontal scrollers (itinerary card rows) to own touch
+     * gestures on iOS WebKit without document-level clipping side effects. */
+    width: 100%;
   }
   body {
     @apply bg-background text-foreground;
