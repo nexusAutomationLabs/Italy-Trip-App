@@ -27,6 +27,7 @@ export default async function ItineraryPage() {
         events={(events as unknown as EventRow[]) ?? []}
         currentUserId={user?.id ?? ''}
         isAdmin={isAdmin ?? false}
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
       />
     </div>
   )

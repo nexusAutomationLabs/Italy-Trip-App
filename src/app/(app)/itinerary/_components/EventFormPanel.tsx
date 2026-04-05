@@ -36,6 +36,7 @@ import { uploadEventCover } from '@/lib/supabase/storage'
 import { CATEGORY_LABELS } from '@/lib/constants/categories'
 import type { EventRow, EventCategory } from '@/types/database.types'
 import { z } from 'zod'
+import { AddressAutocomplete } from './AddressAutocomplete'
 
 // Use the input type (allows category to be optional with default) for form state
 type EventFormInput = z.input<typeof eventSchema>
@@ -257,10 +258,14 @@ export function EventFormPanel({ open, onClose, defaultDate, event }: EventFormP
 
       <div className="space-y-2">
         <Label htmlFor="address">Address</Label>
-        <Input
-          id="address"
-          {...form.register('address')}
-          placeholder="Street address or place name"
+        <AddressAutocomplete
+          defaultValue={event?.address ?? ''}
+          onSelect={(address, lat, lng) => {
+            form.setValue('address', address)
+            form.setValue('latitude', lat)
+            form.setValue('longitude', lng)
+          }}
+          onChange={(value) => form.setValue('address', value)}
         />
       </div>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { APIProvider } from '@vis.gl/react-google-maps'
 import { DayCard } from './DayCard'
 import { EventDetailPanel } from './EventDetailPanel'
 import { EventFormPanel } from './EventFormPanel'
@@ -10,9 +11,10 @@ interface ItineraryClientProps {
   events: EventRow[]
   currentUserId: string
   isAdmin: boolean
+  googleMapsApiKey?: string
 }
 
-export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryClientProps) {
+export function ItineraryClient({ events, currentUserId, isAdmin, googleMapsApiKey }: ItineraryClientProps) {
   const [selectedEvent, setSelectedEvent] = useState<EventRow | null>(null)
   const [createFormOpen, setCreateFormOpen] = useState(false)
   const [createFormDate, setCreateFormDate] = useState<string>('')
@@ -40,7 +42,7 @@ export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryCli
     setCreateFormOpen(true)
   }
 
-  return (
+  const content = (
     <>
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-8">
         {allDates.map((date) => (
@@ -68,4 +70,11 @@ export function ItineraryClient({ events, currentUserId, isAdmin }: ItineraryCli
       />
     </>
   )
+
+  // Wrap with APIProvider when key is available so AddressAutocomplete works
+  if (googleMapsApiKey) {
+    return <APIProvider apiKey={googleMapsApiKey}>{content}</APIProvider>
+  }
+
+  return content
 }
